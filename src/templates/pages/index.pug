@@ -2,49 +2,55 @@ doctype html
 head
 	title Acreditors - Empresa Simples de Crédito
 body
-	header.l-header
-		h1.logo.opening
-			a.nav-link(href="#abertura")
-				include ../includes/logo.pug
-		nav
+	main
+		.logo-bg.opening(data-opening)
+		.logo-bg2.opening(data-opening)
+		header.l-header
+			h1.logo.opening(data-opening)
+				a.nav-link(href="#abertura")
+					include ../includes/logo.pug
+			nav.l-header-nav.opening(data-opening)
+				ul
+					li
+						a.nav-link(href="#quem-somos") Quem somos
+					li
+						a.nav-link(href="#produtos-e-solucoes") Produtos e soluções
+					li
+						a.nav-link(href="#onde-estamos") Onde estamos
+					li
+						a.nav-link(href="#entre-em-contato") Entre em contato
+		nav.l-aside-nav
 			ul
 				li
-					a.nav-link(href="#quem-somos") Quem somos
+					a.nav-link(href="#abertura") #[span Abertura]
 				li
-					a.nav-link(href="#produtos-e-solucoes") Produtos e soluções
+					a.nav-link(href="#quem-somos") #[span Quem somos]
 				li
-					a.nav-link(href="#onde-estamos") Onde estamos
+					a.nav-link(href="#produtos-e-solucoes") #[span Produtos e soluções]
 				li
-					a.nav-link(href="#entre-em-contato") Entre em contato
-	nav.l-aside-nav
-		ul
-			li
-				a.nav-link(href="#quem-somos") #[span Quem somos]
-			li
-				a.nav-link(href="#produtos-e-solucoes") #[span Produtos e soluções]
-			li
-				a.nav-link(href="#onde-estamos") #[span Onde estamos]
-			li
-				a.nav-link(href="#entre-em-contato") #[span Entre em contato]
-	section.l-section#abertura
-		//- p Acredita no seu potencial empreendedor
-	section.l-section#quem-somos
-		h2 Quem somos
-	section.l-section#produtos-e-solucoes
-		h2 Produtos e soluções
-		.c-tab-nav
-			nav
-				ul.tabs
-					li.c-tab-item(data-value="1") Capital de giro
-					li.c-tab-item(data-value="2") Investimento
-			.contents
-				.tab-content(data-value="1")
-					p Sua empresa tem recursos disponíveis em caixa, porém precisa de uma ajuda extra com as despesas operacionais, como pagamento de impostos, salários e demais custos. Podemos antecipar os pagamentos a receber por meio de #[strong duplicatas] ou #[strong cheques] de seus clientes. Garantindo fôlego para o fluxo financeiro
-				.tab-content(data-value="2")
-					p Escolha as condições de #[strong empréstimo] ideais para expandir seu nogócio, facilitando a compra de matéia-prima, equipamentos ou uma maior quantidade de produtos para atender com rapidez a demanda dos seus clientes
-	section.l-section#onde-estamos
-		h2 Onde estamos
-	section.l-section#entre-em-contato
-		h2 Entre em contato
-	footer
-		p ©2021 Acreditors - Empresa Simples de Crédito. Todos os direitos reservados
+					a.nav-link(href="#onde-estamos") #[span Onde estamos]
+				li
+					a.nav-link(href="#entre-em-contato") #[span Entre em contato]
+		section.l-section#abertura
+			p.slogan Acreditamos no seu #[strong potencial empreendedor]
+			img.l-opening-image(src='./images/opening.jpg')
+		section.l-section#quem-somos
+			h2 Quem somos
+		section.l-section#produtos-e-solucoes
+			h2 Produtos e soluções
+			.c-tab-nav
+				nav
+					ul.tabs
+						li.c-tab-item(data-value="1") Capital de giro
+						li.c-tab-item(data-value="2") Investimento
+				.contents
+					.tab-content(data-value="1")
+						p Sua empresa tem recursos disponíveis em caixa, porém precisa de uma ajuda extra com as despesas operacionais, como pagamento de impostos, salários e demais custos. Podemos antecipar os pagamentos a receber por meio de #[strong duplicatas] ou #[strong cheques] de seus clientes. Garantindo fôlego para o fluxo financeiro
+					.tab-content(data-value="2")
+						p Escolha as condições de #[strong empréstimo] ideais para expandir seu nogócio, facilitando a compra de matéia-prima, equipamentos ou uma maior quantidade de produtos para atender com rapidez a demanda dos seus clientes
+		section.l-section#onde-estamos
+			h2 Onde estamos
+		section.l-section#entre-em-contato
+			h2 Entre em contato
+		footer
+			p ©2021 Acreditors - Empresa Simples de Crédito. Todos os direitos reservados

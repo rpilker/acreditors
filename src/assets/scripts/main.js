@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 import '../style/main.styl';
-
-let tabs;
+import scrollMonitor from 'scrollmonitor';
 
 class Tabs {
 	constructor(selector) {
@@ -50,25 +49,44 @@ const scrollTo = (to, duration) => {
 	};
 	animateScroll();
 };
+[...document.querySelectorAll('.nav-link')].forEach((link) => {
+	link.addEventListener('click', (event) => {
+		const hasAnchor = /#[a-z-]+/.exec(link.href);
+		if (hasAnchor) {
+			scrollTo(document.querySelector(hasAnchor[0]).offsetTop, 500);
+			if (document.querySelector('.-is-active')) {
+				document.querySelector('.-is-active').classList.remove('-is-active');
+			}
+			link.classList.add('-is-active');
+			event.preventDefault();
+		}
+	});
+});
 
 (() => {
-	[...document.querySelectorAll('.nav-link')].forEach((link) => {
-		link.addEventListener('click', (event) => {
-			const hasAnchor = /#[a-z-]+/.exec(link.href);
-			if (hasAnchor) {
-				scrollTo(document.querySelector(hasAnchor[0]).offsetTop, 500);
-				if (document.querySelector('.-is-active')) {
-					document.querySelector('.-is-active').classList.remove('-is-active');
-				}
-				if (hasAnchor[0] === '#abertura') {
-					document.querySelector('.logo').classList.add('opening');
-				} else {
-					document.querySelector('.logo').classList.remove('opening');
-				}
-				link.classList.add('-is-active');
-				event.preventDefault();
-			}
-		});
-	});
-	tabs = new Tabs('.c-tab-nav');
+	if (window.scrollY > window.innerHeight * 0.1) {
+		document.querySelectorAll('.opening[data-opening]').forEach(element => element.classList.remove('opening'));
+	} else {
+		document.querySelectorAll('[data-opening]:not(.opening)').forEach(element => element.classList.add('opening'));
+	}
 })();
+
+window.addEventListener('scroll', () => {
+	if (window.scrollY > window.innerHeight * 0.1) {
+		document.querySelectorAll('.opening[data-opening]').forEach(element => element.classList.remove('opening'));
+	} else {
+		document.querySelectorAll('[data-opening]:not(.opening)').forEach(element => element.classList.add('opening'));
+	}
+});
+
+document.querySelectorAll('.l-section').forEach((section) => {
+	const watcher = scrollMonitor.create(section);
+
+	watcher.enterViewport(() => {
+		document.querySelectorAll('.-is-active').forEach(link => link.classList.remove('-is-active'));
+		document.querySelectorAll(`a[href="#${section.id}"]`).forEach(link => link.classList.add('-is-active'));
+	});
+});
+
+// eslint-disable-next-line no-new
+new Tabs('.c-tab-nav');

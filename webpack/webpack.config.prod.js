@@ -11,10 +11,6 @@ const PATHS = {
 	js: path.resolve(__dirname, '../src/assets/scripts'),
 };
 
-const foldersToErase = ['dist'];
-
-if (process.env.NODE_CLEAN) foldersToErase.push('build');
-
 module.exports = {
 	mode: 'production',
 	stats: {
@@ -36,7 +32,7 @@ module.exports = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(
-			foldersToErase,
+			['build'],
 			{
 				root: path.resolve(__dirname, '..'),
 				verbose: true,

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;0,800&display=swap')
 @import	'~marx-css/styl/marx.styl'
 @import	'./vendor/rupture.styl'
 $base = #8c0c0c
@@ -6,7 +7,6 @@ $gray = #ccc
 $dark-gray = #999
 $white = #fff
 
-	@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;0,800&display=swap')
 
 body
 	color: $black
@@ -15,12 +15,21 @@ body
 		font-weight: 700
 		text-transform: lowercase
 		margin: 0
+	main
+		width: 100%
+		max-width: 1280px
+.l-opening-image
+	width: 70%
+	display: block
+	margin: 5vh 0 0 auto
 .l-aside-nav
 	position: fixed
 	left: 0
-	top: 25vh
-	height: 50vh
-	margin: 0 5px
+	top: 20vh
+	height: 60vh
+	margin: 0 35px
+	+above(1280px)
+		left: calc(((100% - 1280px) / 2))
 	ul
 		position: relative
 		height: 100%
@@ -28,7 +37,7 @@ body
 	li
 		display: block
 		width: 5px
-		height: calc(100% / 4)
+		height: calc(100% / 5)
 		margin: 1px 0
 		a
 			display: block
@@ -39,38 +48,82 @@ body
 				background-color: $base
 			> span
 				display: none
-.l-header
-	background-color: $white
-	position: sticky
+.logo-bg
+.logo-bg2
+	background-color: $base
+	width: 170px
+	height 90px
 	top: 0
-	padding: 15px
+	left: calc(15px + 80px)
+	position: fixed
+	mix-blend-mode: none
+	transform-origin: 0 0
+	transition: .5s ease-in-out
+	z-index: 1
+	+above(1280px)
+		left: calc(((100% - 1280px) / 2) + 15px + 80px)
+	&.opening
+		height 60px
+		mix-blend-mode: color
+		transform: translateY(calc(25vh - 15px)) scale(2)
+.logo-bg
+	&.opening
+		mix-blend-mode: luminosity
+		opacity: .3
+.l-header
+	// background-color: $white
+	position: fixed
+	top: 0
+	padding-left: 80px
 	display: grid
-	grid-template-columns: 150px calc(100% - 180px)
-	gap: 30px
+	grid-template-columns: 170px calc(100% - 180px)
 	z-index: 2
 	> .logo
 		margin: 0
 		transform-origin: 0 0
 		transition: .5s ease-in-out
+		// background-color: $base
+		padding: 15px 10px
+		height: 90px
 		&.opening
 			transform: translateY(calc(25vh - 15px)) scale(2)
+			padding: 0 10px
+		> a
+			display: inline-block
+			vertical-align: top
 		svg
-			fill: $black
+			fill: $white
 			width: 150px
-	> nav
-			ul
-				li
-					display inline-block
-					a
-						padding: 10px 15px
-						text-transform: lowercase
-						color: $black
-						font-weight: 700
-						&.-is-active
-							color: $dark-gray
+			vertical-align: top
+	> .l-header-nav
+		background-color: $white
+		padding: 15px 0 15px 10vw
+		transition: .3s .5s ease-in-out
+		&.opening
+			background-color: rgba($white, 0)
+		ul
+			li
+				display inline-block
+				a
+					padding: 10px 15px
+					text-transform: lowercase
+					color: $black
+					font-weight: 700
+					&.-is-active
+						color: $dark-gray
 .l-section
 	height: 100vh
-	padding: 100px 15px 15px
+	padding: 100px 15px 15px 80px
+	position: relative
+	.slogan
+		position: absolute
+		top: 40vh
+		font-size: 22px
+		font-weight: 400
+		width: 30%
+		strong
+			font-weight: 800
+			font-style: italic
 
 .c-tab-nav
 	display: grid
