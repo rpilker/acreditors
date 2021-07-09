@@ -1,36 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;0,800&display=swap')
+// @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
 @import	'~marx-css/styl/marx.styl'
 @import	'./vendor/rupture.styl'
-$base = #8c0c0c
-$black = #2d2d2d
-$gray = #ccc
-$dark-gray = #999
-$white = #fff
+// @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@@0,400;0,500;0,600;0,700;0,751;0,800;0,900;1,400;1,500;1,600;1,700;1,751;1,800;1,900;0,900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;0,600;1,400;1,600;1,900&display=swap')
+$primary = #8c0c0c
+$secondary = #bb0022
+$black = #20292c
+$gray = #e7ecef
+$dark-gray = #82878a
+$white = #fcfcfc
 
+*
+*:after
+*:before
+button
+input
+select
+	-webkit-font-smoothing: antialiased
 
 body
+	background-color: $white
 	color: $black
+	// font-family: 'Bodoni Moda', serif
 	font-family: 'Playfair Display', serif
 	h2
-		font-weight: 700
+		font-weight: 900!important
 		text-transform: lowercase
 		margin: 0
 	main
 		width: 100%
 		max-width: 1280px
-.l-opening-image
-	width: 70%
-	display: block
-	margin: 5vh 0 0 auto
+
 .l-aside-nav
 	position: fixed
 	left: 0
 	top: 20vh
 	height: 60vh
-	margin: 0 35px
+	margin: 0 10px
+	z-index: 2
+	+above(700px)
+		margin: 0 35px
 	+above(1280px)
 		left: calc(((100% - 1280px) / 2))
 	ul
+		margin: 0
 		position: relative
 		height: 100%
 		width: 100%
@@ -45,86 +58,199 @@ body
 			height: 100%
 			background-color: $gray
 			&.-is-active
-				background-color: $base
+				background-color: $secondary
 			> span
 				display: none
 .logo-bg
 .logo-bg2
-	background-color: $base
+.logo-fg
+	background-color: $primary
 	width: 170px
 	height 90px
 	top: 0
-	left: calc(15px + 80px)
+	left: 20px
+	// left: calc(15px + 80px)
 	position: fixed
-	mix-blend-mode: none
+	mix-blend-mode: unset
 	transform-origin: 0 0
 	transition: .5s ease-in-out
-	z-index: 1
+	z-index: 3
+	+above(700px)
+		left: 95px
 	+above(1280px)
 		left: calc(((100% - 1280px) / 2) + 15px + 80px)
 	&.opening
 		height 60px
-		mix-blend-mode: color
-		transform: translateY(calc(25vh - 15px)) scale(2)
+		transform: translateY(20vh) scale(2)
+		+below(370px)
+			transform: translateY(20vh) scale(1.7)
+// .l-lazy-image
+// 	width: 100%
+// 	height: 100%
+// 	overflow: hidden
+// 	position: relative
+img[data-full-size]
+	vertical-align: top
+	filter: blur(2px)
+	opacity: .9
+	transition: 1s
+	&.-loaded
+		opacity: 1
+		filter: blur(0px)
+.l-lazy
+	opacity: 0
+	position: absolute
+.logo-fg
+	padding: 0 10px
+	background-color: transparent
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	svg
+		fill: #fff
+		width: 100%
 .logo-bg
 	&.opening
 		mix-blend-mode: luminosity
-		opacity: .3
+		opacity: .6
+.logo-bg2
+	&.opening
+		mix-blend-mode: color
+.hidden
+	display: none
 .l-header
-	// background-color: $white
+	background-color: $white
 	position: fixed
-	top: 0
-	padding-left: 80px
+	bottom: 0
 	display: grid
-	grid-template-columns: 170px calc(100% - 180px)
+	grid-template-columns: 0 100%
 	z-index: 2
+	margin: 0
+	border-top: 1px solid $black
+	+above(700px)
+		top: 0
+		bottom: auto
+		border-top: 0
+		padding-left: 80px
+		grid-template-columns: 170px calc(100% - 180px)
 	> .logo
 		margin: 0
-		transform-origin: 0 0
-		transition: .5s ease-in-out
-		// background-color: $base
-		padding: 15px 10px
-		height: 90px
-		&.opening
-			transform: translateY(calc(25vh - 15px)) scale(2)
-			padding: 0 10px
+		// background-color: $primary
+		+above(700px)
+			padding: 15px 10px
+			height: 90px
+			z-index: 5
+			position: relative
 		> a
 			display: inline-block
 			vertical-align: top
 		svg
-			fill: $white
+			fill: #fff
 			width: 150px
 			vertical-align: top
 	> .l-header-nav
-		background-color: $white
-		padding: 15px 0 15px 10vw
-		transition: .3s .5s ease-in-out
-		&.opening
-			background-color: rgba($white, 0)
+		white-space: nowrap
+		+above(700px)
+			padding: 15px 0 15px 10vw
 		ul
+			margin: 0
+			overflow-x: auto
+			overflow-y: hidden
+			padding: 10px 10px 10px 0
 			li
 				display inline-block
 				a
 					padding: 10px 15px
 					text-transform: lowercase
-					color: $black
-					font-weight: 700
+					color: $dark-gray
+					font-weight: 900
+					position: relative
+					&::before
+						content: ''
+						position: absolute
+						width: calc(100% - 30px)
+						left: 15px
+						bottom: 3px
+						height: 1px
+						background-color: $black
+						transform: scaleX(0)
+						transition: .15s
+					&::after
+						content: ''
+						position: absolute
+						width: 40px
+						left: 15px
+						bottom: 1px
+						border-bottom: 3px solid $secondary
+						transform: scaleY(0)
+						transform-origin: 0 0
+						transition: .3s
+					&:hover
+					&:active
+					&:focus
+						text-decoration: none
+						&::before
+							content: ''
+							position: absolute
+							width: calc(100% - 30px)
+							left: 15px
+							bottom: 3px
+							height: 1px
+							background-color: $black
 					&.-is-active
-						color: $dark-gray
+						font-style: italic
+						color: $black
+						&:before
+							transform: scaleX(1)
+						&:after
+							transform: scaleY(1)
+
+						// color: $dark-gray
 .l-section
 	height: 100vh
-	padding: 100px 15px 15px 80px
+	padding: 50px 5px 100px 15px
 	position: relative
+	+above(700px)
+		padding: 100px 15px 15px 80px
+#abertura
+	display: grid
+	gap: 20px
+	grid-template-columns: calc(30% - 10px) calc(70% - 10px)
+	align-items: end
+	+above(700px)
+		align-items: center
 	.slogan
-		position: absolute
-		top: 40vh
-		font-size: 22px
+		// position: absolute
+		// top: 40vh
+		font-size: 23px
 		font-weight: 400
-		width: 30%
+		align-self: flex-end
+		margin: 0
+		margin-right: -100%
+		margin-bottom: -1px
+		padding: 5px
+		background-color: $white
+		// width: 30%
+		+above(700px)
+			margin-right: 0
+			height: 50%
+			padding: 0
 		strong
-			font-weight: 800
+			font-weight: 900!important
 			font-style: italic
-
+	.l-opening-image
+		width: 100%
+		height: 80%
+		display: block
+		z-index: -1
+		margin: 0
+		position: relative
+		overflow: hidden
+		img
+			width: 100%
+			height: 100%
+			max-width: none
+			object-fit: cover
 .c-tab-nav
 	display: grid
 	grid-template-columns: 140px 1fr
@@ -134,13 +260,13 @@ body
 		margin: 0
 		.c-tab-item
 			padding: 5px 10px
-			font-weight: 700
+			font-weight: 900!important
 			color: $dark-gray
 			text-transform: lowercase
 			position: relative
 	> .contents
 		height: 100%
-		border-left: 2px solid $black
+		border-left: 1px solid $black
 		padding-left: 20px
 	&.-navigation-ready
 		.c-tab-item
@@ -151,10 +277,10 @@ body
 					content: ''
 					position: absolute
 					top: 0
-					right: 0
-					width: 5px
+					right: -1px
+					width: 3px
 					height: 100%
-					background-color: $black
+					background-color: $secondary
 
 		.tab-content
 			display: none

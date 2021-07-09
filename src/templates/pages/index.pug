@@ -1,14 +1,19 @@
 doctype html
 head
 	title Acreditors - Empresa Simples de Crédito
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
 body
 	main
 		.logo-bg.opening(data-opening)
 		.logo-bg2.opening(data-opening)
+		.logo-fg.opening(data-opening)
+			a.nav-link(href="#abertura")
+				include ../includes/logo.pug
 		header.l-header
-			h1.logo.opening(data-opening)
-				a.nav-link(href="#abertura")
-					include ../includes/logo.pug
+			h1.logo
+				span.hidden Acreditors - Empresa Simples de Crédito
+				//- a.nav-link(href="#abertura")
+				//- 	include ../includes/logo.pug
 			nav.l-header-nav.opening(data-opening)
 				ul
 					li
@@ -33,7 +38,8 @@ body
 					a.nav-link(href="#entre-em-contato") #[span Entre em contato]
 		section.l-section#abertura
 			p.slogan Acreditamos no seu #[strong potencial empreendedor]
-			img.l-opening-image(src='./images/opening.jpg')
+			figure.l-opening-image
+				img(src='./images/opening-th.jpg', data-full-size='./images/opening.jpg', width="1500", height="1000", alt="Fotografia noturna da Avenida Paulista",  title="Fotografia noturna da Avenida Paulista")
 		section.l-section#quem-somos
 			h2 Quem somos
 		section.l-section#produtos-e-solucoes

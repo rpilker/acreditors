@@ -54,10 +54,10 @@ const scrollTo = (to, duration) => {
 		const hasAnchor = /#[a-z-]+/.exec(link.href);
 		if (hasAnchor) {
 			scrollTo(document.querySelector(hasAnchor[0]).offsetTop, 500);
-			if (document.querySelector('.-is-active')) {
-				document.querySelector('.-is-active').classList.remove('-is-active');
-			}
-			link.classList.add('-is-active');
+			// if (document.querySelector('.-is-active')) {
+			// 	document.querySelector('.-is-active').classList.remove('-is-active');
+			// }
+			// link.classList.add('-is-active');
 			event.preventDefault();
 		}
 	});
@@ -69,6 +69,19 @@ const scrollTo = (to, duration) => {
 	} else {
 		document.querySelectorAll('[data-opening]:not(.opening)').forEach(element => element.classList.add('opening'));
 	}
+	[...document.querySelectorAll('img[data-full-size]')].forEach((img) => {
+		const defaultSrc = img.dataset.fullSize;
+		// img.src = img.dataset.smallSize;
+		const lazy = document.createElement('img');
+		lazy.classList.add('l-lazy');
+		lazy.src = defaultSrc;
+		lazy.addEventListener('load', () => {
+			img.src = lazy.src;
+			img.classList.add('-loaded');
+			img.parentNode.removeChild(lazy);
+		}, null);
+		img.parentNode.appendChild(lazy);
+	});
 })();
 
 window.addEventListener('scroll', () => {
