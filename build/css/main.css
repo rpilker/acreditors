@@ -824,9 +824,6 @@ body main {
   width: 100%;
   max-width: 300px;
 }
-.loading svg .logo-letter-a {
-  fill: #20292c;
-}
 .loading svg .sub {
   display: none;
 }
