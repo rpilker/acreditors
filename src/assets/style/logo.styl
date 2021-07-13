@@ -1,0 +1,74 @@
+
+.logo-bg
+.logo-bg2
+.logo-fg
+	background-color: $primary
+	width: 170px
+	height 90px
+	top: 0
+	left: 20px
+	// left: calc(15px + 80px)
+	position: fixed
+	transform-origin: 0 0
+	transition: transform .5s ease-in-out, height .5s ease-in-out
+	z-index: 3
+	+above(700px)
+		left: 95px
+		mix-blend-mode: unset
+	+above(1280px)
+		left: calc(((100% - 1280px) / 2) + 15px + 80px)
+	&.opening
+		height 60px
+		transform: translateY(20vh) scale(2)
+		+below(370px)
+			transform: translateY(20vh) scale(1.7)
+.logo-fg
+	padding: 0 10px
+	background-color: transparent
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	svg
+		fill: #fff
+		width: 100%
+.logo-bg
+	// transform: skew(-10deg, 0) scaleX(1.1)
+	&.opening
+		mix-blend-mode: luminosity
+		opacity: .6
+.logo-bg2
+	// transform: skew(-10deg, 0) scaleX(1.1)
+	&.opening
+		mix-blend-mode: color
+@keyframes logo
+	0%
+		transform: scale(1)
+		opacity: 1
+		filter: blur(0)
+	100%
+		transform: scale(5)
+		opacity: 0
+		filter: blur(5px)
+.loading
+	width: 100%
+	height: 100%
+	mix-blend-mode: unset
+	left: 0
+	position: fixed
+	top: 0
+	background-color: $primary
+	z-index: 5
+	display: flex
+	align-items: center
+	justify-content: center
+	svg
+		fill: #fff
+		width: 100%
+		max-width: 300px
+		.logo-letter-a
+			fill: $black
+		.sub
+			display: none
+	&.loaded
+		animation: logo 1s 2s ease-in-out
+		animation-fill-mode: forwards

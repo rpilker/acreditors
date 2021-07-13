@@ -5,24 +5,70 @@ import scrollMonitor from 'scrollmonitor';
 class Tabs {
 	constructor(selector) {
 		this.element = document.querySelector(selector);
-		[...this.element.querySelectorAll('.c-tab-item')].forEach((el, i) => {
+		[...this.element.querySelectorAll('.c-tab-item')].forEach((el, i, arr) => {
 			if (!i) {
 				this.setValue(el.dataset.value);
 			}
+			el.setAttribute('tabIndex', 0);
 			el.addEventListener('click', () => {
 				this.setValue(el.dataset.value);
 			}, null);
+			// el.addEventListener('mouseenter', () => {
+			// 	this.setValue(el.dataset.value);
+			// }, null);
+			el.addEventListener('keydown', (event) => {
+				// this.setValue(el.dataset.value);
+				const focusNext = () => {
+					if (arr[i + 1]) {
+						arr[i + 1].focus();
+					} else {
+						arr[0].focus();
+					}
+				};
+				const focusPrev = () => {
+					if (arr[i - 1]) {
+						arr[i - 1].focus();
+					} else {
+						arr[arr.length - 1].focus();
+					}
+				};
+				switch (event.code) {
+				case 'Space':
+				case 'Enter':
+					this.setValue(el.dataset.value);
+					event.preventDefault();
+					break;
+				case 'ArrowDown':
+					focusNext();
+					event.preventDefault();
+					break;
+				case 'ArrowUp':
+					focusPrev();
+					event.preventDefault();
+					break;
+				default:
+					console.log(event.code);
+					break;
+				}
+			}, null);
 		});
-		// this.setValue(this.element.querySelector('.c-tab-item').dataset.value);
-		this.element.classList.add('-navigation-ready');
 	}
 
 	setValue(value) {
 		this.value = value;
 		this.current = this.element.querySelector(`.c-tab-item[data-value="${value}"]`);
-		[...this.element.querySelectorAll('.-current')].forEach(el => el.classList.remove('-current'));
+		[...this.element.querySelectorAll('.-current')].forEach((el) => {
+			el.classList.remove('-current');
+			if (el.classList.contains('c-tab-item')) {
+				el.setAttribute('aria-selected', 'false');
+			} else {
+				el.setAttribute('aria-hidden', 'true');
+			}
+		});
 		this.element.querySelector(`.tab-content[data-value="${value}"]`).classList.add('-current');
+		this.element.querySelector(`.tab-content[data-value="${value}"]`).setAttribute('aria-hidden', 'false');
 		this.current.classList.add('-current');
+		this.current.setAttribute('aria-selected', 'true');
 	}
 }
 
@@ -64,6 +110,7 @@ const scrollTo = (to, duration) => {
 });
 
 (() => {
+	[...document.querySelectorAll('.loading')].forEach(el => el.classList.add('loaded'));
 	if (window.scrollY > window.innerHeight * 0.1) {
 		document.querySelectorAll('.opening[data-opening]').forEach(element => element.classList.remove('opening'));
 	} else {
@@ -95,9 +142,14 @@ window.addEventListener('scroll', () => {
 document.querySelectorAll('.l-section').forEach((section) => {
 	const watcher = scrollMonitor.create(section);
 
-	watcher.enterViewport(() => {
+	watcher.fullyEnterViewport(() => {
 		document.querySelectorAll('.-is-active').forEach(link => link.classList.remove('-is-active'));
-		document.querySelectorAll(`a[href="#${section.id}"]`).forEach(link => link.classList.add('-is-active'));
+		document.querySelectorAll(`a[href="#${section.id}"]`).forEach((link) => {
+			link.classList.add('-is-active');
+			if (link.classList.contains('-header')) {
+				link.parentNode.parentNode.scrollLeft = link.parentNode.offsetLeft;
+			}
+		});
 	});
 });
 

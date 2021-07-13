@@ -1,12 +1,10 @@
-// @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
 @import	'~marx-css/styl/marx.styl'
 @import	'./vendor/rupture.styl'
-// @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@@0,400;0,500;0,600;0,700;0,751;0,800;0,900;1,400;1,500;1,600;1,700;1,751;1,800;1,900;0,900&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;0,600;1,400;1,600;1,900&display=swap')
-$primary = #8c0c0c
 $secondary = #bb0022
+$primary = $secondary
 $black = #20292c
-$gray = #e7ecef
+$gray = #dfe3e5
 $dark-gray = #82878a
 $white = #fcfcfc
 
@@ -19,6 +17,11 @@ select
 	-webkit-font-smoothing: antialiased
 
 body
+	a
+		&:hover
+		&:active
+		&:focus
+			text-decoration: none
 	background-color: $white
 	color: $black
 	// font-family: 'Bodoni Moda', serif
@@ -27,10 +30,15 @@ body
 		font-weight: 900!important
 		text-transform: lowercase
 		margin: 0
+		+above(700px)
+			font-size: 43px
+	.text
+		text-align: left
 	main
 		width: 100%
 		max-width: 1280px
 
+@import './logo.styl'
 .l-aside-nav
 	position: fixed
 	left: 0
@@ -57,38 +65,15 @@ body
 			width: 100%
 			height: 100%
 			background-color: $gray
+			transition: .15s
+			transform-origin: 0 0
+			&:hover
+				transform: scaleX(1.5)
+				background-color: $secondary
 			&.-is-active
 				background-color: $secondary
 			> span
 				display: none
-.logo-bg
-.logo-bg2
-.logo-fg
-	background-color: $primary
-	width: 170px
-	height 90px
-	top: 0
-	left: 20px
-	// left: calc(15px + 80px)
-	position: fixed
-	mix-blend-mode: unset
-	transform-origin: 0 0
-	transition: .5s ease-in-out
-	z-index: 3
-	+above(700px)
-		left: 95px
-	+above(1280px)
-		left: calc(((100% - 1280px) / 2) + 15px + 80px)
-	&.opening
-		height 60px
-		transform: translateY(20vh) scale(2)
-		+below(370px)
-			transform: translateY(20vh) scale(1.7)
-// .l-lazy-image
-// 	width: 100%
-// 	height: 100%
-// 	overflow: hidden
-// 	position: relative
 img[data-full-size]
 	vertical-align: top
 	filter: blur(2px)
@@ -100,28 +85,15 @@ img[data-full-size]
 .l-lazy
 	opacity: 0
 	position: absolute
-.logo-fg
-	padding: 0 10px
-	background-color: transparent
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	svg
-		fill: #fff
-		width: 100%
-.logo-bg
-	&.opening
-		mix-blend-mode: luminosity
-		opacity: .6
-.logo-bg2
-	&.opening
-		mix-blend-mode: color
 .hidden
 	display: none
 .l-header
+	width: 100%
+	max-width: 1280px
 	background-color: $white
 	position: fixed
 	bottom: 0
+	left: 0
 	display: grid
 	grid-template-columns: 0 100%
 	z-index: 2
@@ -133,6 +105,19 @@ img[data-full-size]
 		border-top: 0
 		padding-left: 80px
 		grid-template-columns: 170px calc(100% - 180px)
+		transition: .5s
+		&::after
+			content: ''
+			position: absolute
+			left: 0
+			bottom: 0
+			height: 1px
+			width: 100%
+			background-image: linear-gradient(60deg, rgba(0,0,0,0.1) 1%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 99%)
+		&.opening
+			border-color: $white
+	+above(1280px)
+		left: calc((100% - 1280px) / 2)
 	> .logo
 		margin: 0
 		// background-color: $primary
@@ -154,17 +139,20 @@ img[data-full-size]
 			padding: 15px 0 15px 10vw
 		ul
 			margin: 0
+			height: 100%
 			overflow-x: auto
 			overflow-y: hidden
-			padding: 10px 10px 10px 0
+			padding: 8px 10px 8px 0
 			li
 				display inline-block
+				height: 100%
 				a
 					padding: 10px 15px
 					text-transform: lowercase
 					color: $dark-gray
 					font-weight: 900
 					position: relative
+					display: block
 					&::before
 						content: ''
 						position: absolute
@@ -172,7 +160,7 @@ img[data-full-size]
 						left: 15px
 						bottom: 3px
 						height: 1px
-						background-color: $black
+						background-color: $dark-gray
 						transform: scaleX(0)
 						transition: .15s
 					&::after
@@ -189,14 +177,15 @@ img[data-full-size]
 					&:active
 					&:focus
 						text-decoration: none
+						color: $black
 						&::before
-							content: ''
 							position: absolute
 							width: calc(100% - 30px)
 							left: 15px
 							bottom: 3px
 							height: 1px
 							background-color: $black
+							transform: scaleY(1)
 					&.-is-active
 						font-style: italic
 						color: $black
@@ -208,39 +197,41 @@ img[data-full-size]
 						// color: $dark-gray
 .l-section
 	height: 100vh
-	padding: 50px 5px 100px 15px
+	padding: 90px 5px 100px 15px
 	position: relative
-	+above(700px)
-		padding: 100px 15px 15px 80px
-#abertura
 	display: grid
+	grid-template-rows: 40px calc(100% - 40px)
+	+above(700px)
+		grid-template-rows: 80px calc(100% - 80px)
+		padding: 100px 15px 15px 80px
+	.text
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+		max-width: 700px
+		.mapa
+			width: 100%
+			max-width: 700px
+			height: 100%
+			object-fit: contain
+		p
+			width: 100%
+		strong
+			font-weight: 900
+#abertura
 	gap: 20px
+	// grid-template-areas: 'title title' 'text map'
+	grid-template-rows: 100%
 	grid-template-columns: calc(30% - 10px) calc(70% - 10px)
 	align-items: end
+	padding: 50px 5px 100px 15px
 	+above(700px)
+		padding: 100px 15px 15px 80px
 		align-items: center
-	.slogan
-		// position: absolute
-		// top: 40vh
-		font-size: 23px
-		font-weight: 400
-		align-self: flex-end
-		margin: 0
-		margin-right: -100%
-		margin-bottom: -1px
-		padding: 5px
-		background-color: $white
-		// width: 30%
-		+above(700px)
-			margin-right: 0
-			height: 50%
-			padding: 0
-		strong
-			font-weight: 900!important
-			font-style: italic
 	.l-opening-image
 		width: 100%
-		height: 80%
+		height: 90%
 		display: block
 		z-index: -1
 		margin: 0
@@ -251,11 +242,92 @@ img[data-full-size]
 			height: 100%
 			max-width: none
 			object-fit: cover
+#onde-estamos
+	gap: 20px
+	// align-items: end
+	padding: 50px 5px 100px 15px
+	grid-template-areas: 'title title' 'text map'
+	grid-template-rows: 80px calc(100% - 80px)
+	grid-template-columns: calc(30% - 10px) calc(70% - 10px)
+	+above(700px)
+		grid-template-areas: 'title title' 'text map'
+		grid-template-rows: 80px calc(100% - 80px)
+		grid-template-columns: calc(30% - 10px) calc(70% - 10px)
+		padding: 100px 15px 15px 80px
+		align-items: center
+	h2
+		grid-area: title
+	.slogan
+		grid-area: text
+	.mapa
+		grid-area: map
+		width: 150%
+		height: 90%
+		display: block
+		z-index: -1
+		margin: 0
+		position: relative
+		overflow: hidden
+		margin-left: -50%
+		+above(700px)
+			width: 100%
+			margin-left: 0
+		img
+			width: 100%
+			height: 100%
+			max-width: none
+			object-fit: contain
+#entre-em-contato
+	.text
+		p
+			// & + p
+			// 	border-top: 1px solid $black
+			a
+				color: $black
+				line-height: 1.5em
+				display: block
+				padding: 15px
+				display: grid
+				grid-template-areas: 'icon title' 'icon desc'
+				grid-template-columns: 40px calc(100% - 40px)
+				grid-template-rows: 23px 17px
+				gap: 0 10px
+				transition: .3s
+				&:hover
+					text-decoration: none
+					background-color: $gray
+				img
+					width: 100%
+					vertical-align: middle
+					margin-right: 10px
+					grid-area: icon
+				span
+					font-weight: 900
+					// font-style: italic
+					font-size: 21px
+					line-height: 1em
+					vertical-align: middle
+					grid-area: title
+					color: $secondary
+					text-transform: lowercase
+					& + span
+						color: $black
+						grid-area: desc
+						font-weight: 600
+						font-size: 15px
+						line-height: 15px
+						// font-style: italic
+						vertical-align: middle
+						// color: $secondary
 .c-tab-nav
 	display: grid
 	grid-template-columns: 140px 1fr
-	padding: 30px 0
-	min-height: 50vh
+	padding: 30px 0 0
+	width: 100%
+	max-width: 700px
+	+above(700px)
+		max-height: 60%
+	// min-height: 50vh
 	.tabs
 		margin: 0
 		.c-tab-item
@@ -265,24 +337,78 @@ img[data-full-size]
 			text-transform: lowercase
 			position: relative
 	> .contents
+		font-size: 15px
 		height: 100%
 		border-left: 1px solid $black
 		padding-left: 20px
-	&.-navigation-ready
-		.c-tab-item
-			cursor: pointer
-			&.-current
-				color: $black
-				&::after
-					content: ''
-					position: absolute
-					top: 0
-					right: -1px
-					width: 3px
-					height: 100%
-					background-color: $secondary
-
-		.tab-content
-			display: none
-			&.-current
+	.c-tab-item
+		cursor: pointer
+		&:hover
+		&:focus
+		&:active
+			color: $black
+		&.-current
+			color: $black
+			&::after
+				content: ''
+				position: absolute
+				top: 0
+				right: -1px
+				width: 3px
+				height: 100%
+				background-color: $secondary
+	.tab-content
+		display: none
+		&.-current
+			display: block
+.slogan
+	// position: absolute
+	// top: 40vh
+	font-size: 23px
+	font-weight: 400
+	align-self: flex-end
+	margin: 0
+	margin-right: -100%
+	margin-bottom: -1px
+	padding: 5px
+	background-color: rgba($white, .8)
+	// width: 30%
+	+above(700px)
+		margin-right: 0
+		height: 50%
+		padding: 0
+	strong
+		font-weight: 900!important
+		font-style: italic
+footer
+	font-family: sans-serif
+	font-size: 12px
+	color: $black
+	background-color: $gray
+	padding-bottom: 50px
+	border: 0
+	margin: 0
+	+above(700px)
+		z-index: 4
+		position: relative
+	.l-footer-content
+		width: 100%
+		max-width: 1280px
+		margin: 0 auto
+		padding: 30px 40px
+		.social
+			svg
+				max-width: 150px
 				display: block
+				margin: 0 auto 0 0
+				// float: left
+		hr
+			margin: 0 auto
+			max-width: 1200px
+			border-color: $dark-gray
+		p
+			width: 100%
+			max-width: 1280px
+			margin: 0 auto
+			line-height: 1.7em
+			padding: 1em 0 2em
