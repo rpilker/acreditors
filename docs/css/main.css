@@ -840,6 +840,16 @@ body main {
     opacity: 1;
     -webkit-filter: blur(0);
             filter: blur(0);
+    display: block;
+    visibility: visible;
+  }
+  99% {
+    -webkit-transform: scale(5);
+            transform: scale(5);
+    opacity: 0;
+    -webkit-filter: blur(5px);
+            filter: blur(5px);
+    visibility: visible;
   }
   100% {
     -webkit-transform: scale(5);
@@ -847,6 +857,7 @@ body main {
     opacity: 0;
     -webkit-filter: blur(5px);
             filter: blur(5px);
+    visibility: hidden;
   }
 }
 @keyframes logo {
@@ -856,6 +867,16 @@ body main {
     opacity: 1;
     -webkit-filter: blur(0);
             filter: blur(0);
+    display: block;
+    visibility: visible;
+  }
+  99% {
+    -webkit-transform: scale(5);
+            transform: scale(5);
+    opacity: 0;
+    -webkit-filter: blur(5px);
+            filter: blur(5px);
+    visibility: visible;
   }
   100% {
     -webkit-transform: scale(5);
@@ -863,6 +884,7 @@ body main {
     opacity: 0;
     -webkit-filter: blur(5px);
             filter: blur(5px);
+    visibility: hidden;
   }
 }
 .l-aside-nav {
