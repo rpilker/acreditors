@@ -3,90 +3,91 @@ head
 	title ACreditors - Empresa Simples de Crédito
 	meta(name='viewport', content='width=device-width, initial-scale=1.0')
 body
-	main
-		.logo-bg.opening(data-opening)
-		.logo-bg2.opening(data-opening)
-		.logo-fg.opening(data-opening)
-			a.nav-link(href="#abertura")
-				include ../includes/logo.pug
-		header.l-header.opening(data-opening)
-			h1.logo
-				span.hidden ACreditors - Empresa Simples de Crédito
-				//- a.nav-link(href="#abertura")
-				//- 	include ../includes/logo.pug
-			nav.l-header-nav.opening(data-opening)
-				ul
-					li
-						a.nav-link.-header(href="#quem-somos") Quem somos
-					li
-						a.nav-link.-header(href="#produtos-e-solucoes") Produtos e soluções
-					li
-						a.nav-link.-header(href="#onde-estamos") Onde estamos
-					li
-						a.nav-link.-header(href="#entre-em-contato") Entre em contato
-		nav.l-aside-nav
-			ul
-				li
-					a.nav-link(href="#abertura") #[span Abertura]
-				li
-					a.nav-link(href="#quem-somos") #[span Quem somos]
-				li
-					a.nav-link(href="#produtos-e-solucoes") #[span Produtos e soluções]
-				li
-					a.nav-link(href="#onde-estamos") #[span Onde estamos]
-				li
-					a.nav-link(href="#entre-em-contato") #[span Entre em contato]
-		section.l-section#abertura
-			p.slogan Acreditamos no seu #[strong potencial empreendedor]
-			figure.l-opening-image
-				img(src='./images/opening-th.jpg', data-full-size='./images/opening.jpg', width="1500", height="1000", alt="Fotografia noturna da Avenida Paulista",  title="Fotografia noturna da Avenida Paulista")
-		section.l-section#quem-somos
-			h2 Quem somos
-			.text
-				p A #[strong ACreditors] é uma empresa pequena e descompicada que acredita no seu potencial empreendedor oferecendo crédito personalizado com agilidade, segurança e respeito exclusivamente aos microempreendedores individuais, microempresas e empresas de pequeno porte localizadas na cidade de São Paulo e cidades limitrofes
-		section.l-section#produtos-e-solucoes
-			h2 Produtos e soluções
-			.c-tab-nav
-				nav
-					ul.tabs(role="tablist")
-						li.c-tab-item(data-value="1", role="tab", aria-setsize="2", aria-posinset="1") Capital de giro
-						li.c-tab-item(data-value="2", role="tab", aria-setsize="2", aria-posinset="2") Investimento
-				.contents
-					.tab-content(data-value="1", role="tabpanel")
-						p Sua empresa tem recursos disponíveis em caixa, porém precisa de uma ajuda extra com as despesas operacionais, como pagamento de impostos, salários e demais custos. Podemos antecipar os pagamentos a receber por meio de #[strong duplicatas] ou #[strong cheques] de seus clientes. Garantindo fôlego para o fluxo financeiro
-					.tab-content(data-value="2", role="tabpanel")
-						p Escolha as condições de #[strong empréstimo] ideais para expandir seu nogócio, facilitando a compra de matéia-prima, equipamentos ou uma maior quantidade de produtos para atender com rapidez a demanda dos seus clientes
-		section.l-section#onde-estamos
-			h2 Onde estamos
-			.slogan Atendemos na cidade de #[strong São Paulo] e cidades limitrofes
-			fgure.mapa
-				img(src="./images/mapa.svg")
-		section.l-section#entre-em-contato
-			h2 Entre em contato
-			.text
-				p
-					a(href="https://api.whatsapp.com/send?phone=5511999083883&text=Ola%2C%20Gizelle%2C%20tudo%20bem%3F%0AGostaria%20de%20fazer%20um%20empr%C3%A9stimo", target="_blank")
-						img(src="./images/whatsapp.svg", alt="WhastApp" width="70" height="70")
-						span WhatsApp
-						span 11 9 9908 3883
-				//- p
-				//- 	a(href="tel:5511999999087", target="_blank") fone
-				p
-					a(href="mailto:gizelle@acreditors.com?subject=Empr%C3%A9stimo&body=Ola%2C%20Gizelle%2C%20tudo%20bem%3F%0AGostaria%20de%20fazer%20um%20empr%C3%A9stimo", target="_blank")
-						img(src="./images/mail.svg", alt="Email" width="70" height="70")
-						span Email
-						span gizelle@acreditors.com
-				p
-					a(href="https://www.instagram.com/acreditors_credito/", target="_blank")
-						img(src="./images/instagram.svg", alt="Instagram" width="70" height="70")
-						span Instagram
-						span @acreditors_credito
-	footer
-		.l-footer-content
-			.social
-				include ../includes/logo.pug
-			p.text Prazo de pagamento: de X a XX meses. De X,XX% a.m. (XX,XX% a.a.) a X,XX% a.m. (XXX,XX% a.a.). Exemplo: um empréstimo de R$ XX.XXX,XX com pagamento em 12 parcelas R$ X.XXX,XX. O valor total a ser pago será de R$ XX.XXX,XX, com juros de X,XX% a.m. e CET de X,XX% a.m.. Não cobramos taxa de abertura de capital nem outras taxas apenas o valor do juros de acordo com analise de credito e garantia. A BeCrédito realiza operações de empréstimo, de financiamento e de desconto de títulos de crédito, exclusivamente com recursos próprios, para Microempreendedores Individuais (MEI), microempresas (ME) e empresas de pequeno porte (EPP) optantes do Simples Nacional situados na cidade de São Paulou ou municípios limítrofes. Para mais informações, consulte a Lei Complementar Nº 167, de 24 de abril de 2019.
-			hr
-			p © 2021 ACreditors - Empresa Simples de Crédito. Todos os direitos reservados
-	.loading
+	//- main
+	//- 	.logo-bg.opening(data-opening)
+	//- 	.logo-bg2.opening(data-opening)
+	//- 	.logo-fg.opening(data-opening)
+	//- 		a.nav-link(href="#abertura")
+	//- 			include ../includes/logo.pug
+	//- 	header.l-header.opening(data-opening)
+	//- 		h1.logo
+	//- 			span.hidden ACreditors - Empresa Simples de Crédito
+	//- 			//- a.nav-link(href="#abertura")
+	//- 			//- 	include ../includes/logo.pug
+	//- 		nav.l-header-nav.opening(data-opening)
+	//- 			ul
+	//- 				li
+	//- 					a.nav-link.-header(href="#quem-somos") Quem somos
+	//- 				li
+	//- 					a.nav-link.-header(href="#produtos-e-solucoes") Produtos e soluções
+	//- 				li
+	//- 					a.nav-link.-header(href="#onde-estamos") Onde estamos
+	//- 				li
+	//- 					a.nav-link.-header(href="#entre-em-contato") Entre em contato
+	//- 	nav.l-aside-nav
+	//- 		ul
+	//- 			li
+	//- 				a.nav-link(href="#abertura") #[span Abertura]
+	//- 			li
+	//- 				a.nav-link(href="#quem-somos") #[span Quem somos]
+	//- 			li
+	//- 				a.nav-link(href="#produtos-e-solucoes") #[span Produtos e soluções]
+	//- 			li
+	//- 				a.nav-link(href="#onde-estamos") #[span Onde estamos]
+	//- 			li
+	//- 				a.nav-link(href="#entre-em-contato") #[span Entre em contato]
+	//- 	section.l-section#abertura
+	//- 		p.slogan Acreditamos no seu #[strong potencial empreendedor]
+	//- 		figure.l-opening-image
+	//- 			img(src='./images/opening-th.jpg', data-full-size='./images/opening.jpg', width="1500", height="1000", alt="Fotografia noturna da Avenida Paulista",  title="Fotografia noturna da Avenida Paulista")
+	//- 	section.l-section#quem-somos
+	//- 		h2 Quem somos
+	//- 		.text
+	//- 			p A #[strong ACreditors] é uma empresa pequena e descompicada que acredita no seu potencial empreendedor oferecendo crédito personalizado com agilidade, segurança e respeito exclusivamente aos microempreendedores individuais, microempresas e empresas de pequeno porte localizadas na cidade de São Paulo e cidades limitrofes
+	//- 	section.l-section#produtos-e-solucoes
+	//- 		h2 Produtos e soluções
+	//- 		.c-tab-nav
+	//- 			nav
+	//- 				ul.tabs(role="tablist")
+	//- 					li.c-tab-item(data-value="1", role="tab", aria-setsize="2", aria-posinset="1") Capital de giro
+	//- 					li.c-tab-item(data-value="2", role="tab", aria-setsize="2", aria-posinset="2") Investimento
+	//- 			.contents
+	//- 				.tab-content(data-value="1", role="tabpanel")
+	//- 					p Sua empresa tem recursos disponíveis em caixa, porém precisa de uma ajuda extra com as despesas operacionais, como pagamento de impostos, salários e demais custos. Podemos antecipar os pagamentos a receber por meio de #[strong duplicatas] ou #[strong cheques] de seus clientes. Garantindo fôlego para o fluxo financeiro
+	//- 				.tab-content(data-value="2", role="tabpanel")
+	//- 					p Escolha as condições de #[strong empréstimo] ideais para expandir seu nogócio, facilitando a compra de matéia-prima, equipamentos ou uma maior quantidade de produtos para atender com rapidez a demanda dos seus clientes
+	//- 	section.l-section#onde-estamos
+	//- 		h2 Onde estamos
+	//- 		.slogan Atendemos na cidade de #[strong São Paulo] e cidades limitrofes
+	//- 		fgure.mapa
+	//- 			img(src="./images/mapa.svg")
+	//- 	section.l-section#entre-em-contato
+	//- 		h2 Entre em contato
+	//- 		.text
+	//- 			p
+	//- 				a(href="https://api.whatsapp.com/send?phone=5511999083883&text=Ola%2C%20Gizelle%2C%20tudo%20bem%3F%0AGostaria%20de%20fazer%20um%20empr%C3%A9stimo", target="_blank")
+	//- 					img(src="./images/whatsapp.svg", alt="WhastApp" width="70" height="70")
+	//- 					span WhatsApp
+	//- 					span 11 9 9908 3883
+	//- 			//- p
+	//- 			//- 	a(href="tel:5511999999087", target="_blank") fone
+	//- 			p
+	//- 				a(href="mailto:gizelle@acreditors.com?subject=Empr%C3%A9stimo&body=Ola%2C%20Gizelle%2C%20tudo%20bem%3F%0AGostaria%20de%20fazer%20um%20empr%C3%A9stimo", target="_blank")
+	//- 					img(src="./images/mail.svg", alt="Email" width="70" height="70")
+	//- 					span Email
+	//- 					span gizelle@acreditors.com
+	//- 			p
+	//- 				a(href="https://www.instagram.com/acreditors_credito/", target="_blank")
+	//- 					img(src="./images/instagram.svg", alt="Instagram" width="70" height="70")
+	//- 					span Instagram
+	//- 					span @acreditors_credito
+	//- footer
+	//- 	.l-footer-content
+	//- 		.social
+	//- 			include ../includes/logo.pug
+	//- 		p.text Prazo de pagamento: de X a XX meses. De X,XX% a.m. (XX,XX% a.a.) a X,XX% a.m. (XXX,XX% a.a.). Exemplo: um empréstimo de R$ XX.XXX,XX com pagamento em 12 parcelas R$ X.XXX,XX. O valor total a ser pago será de R$ XX.XXX,XX, com juros de X,XX% a.m. e CET de X,XX% a.m.. Não cobramos taxa de abertura de capital nem outras taxas apenas o valor do juros de acordo com analise de credito e garantia. A BeCrédito realiza operações de empréstimo, de financiamento e de desconto de títulos de crédito, exclusivamente com recursos próprios, para Microempreendedores Individuais (MEI), microempresas (ME) e empresas de pequeno porte (EPP) optantes do Simples Nacional situados na cidade de São Paulou ou municípios limítrofes. Para mais informações, consulte a Lei Complementar Nº 167, de 24 de abril de 2019.
+	//- 		hr
+	//- 		p © 2021 ACreditors - Empresa Simples de Crédito. Todos os direitos reservados
+	.soon
 		include ../includes/logo.pug
+		p em breve

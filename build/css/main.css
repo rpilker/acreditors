@@ -732,7 +732,7 @@ body main {
 .logo-bg,
 .logo-bg2,
 .logo-fg {
-  background-color: #b02;
+  background-color: #8c0c0c;
   width: 170px;
   height: 90px;
   top: 0;
@@ -807,7 +807,7 @@ body main {
   left: 0;
   position: fixed;
   top: 0;
-  background-color: #b02;
+  background-color: #8c0c0c;
   z-index: 5;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -832,6 +832,40 @@ body main {
           animation: logo 1s 2s ease-in-out;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
+}
+.soon {
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: unset;
+  left: 0;
+  position: fixed;
+  top: 0;
+  background-color: #8c0c0c;
+  z-index: 5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.soon svg {
+  fill: #fff;
+  width: 100%;
+  max-width: 300px;
+}
+.soon p {
+  font-size: 21px;
+  color: #fcfcfc;
+  padding-top: 20px;
+  font-weight: 900;
 }
 @-webkit-keyframes logo {
   0% {
