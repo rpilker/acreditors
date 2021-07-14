@@ -1,3 +1,8 @@
+@keyframes zoom-in
+	0%
+		transform: scale(1)
+	100%
+		transform: scale(15)
 
 .logo-bg
 .logo-bg2
@@ -80,6 +85,12 @@
 	&.loaded
 		animation: logo 1s 2s ease-in-out
 		animation-fill-mode: forwards
+		svg
+			animation-name: zoom-in
+			animation-delay: .5s
+			animation-duration: 2s
+			animation-timing-function: ease-in
+			animation-fill-mode: forwards
 
 .soon
 	width: 100%
@@ -98,6 +109,11 @@
 		fill: #fff
 		width: 100%
 		max-width: 300px
+		animation-name: zoom-in
+		animation-delay: .5s
+		animation-duration: 3.5s
+		animation-timing-function: ease-in
+		animation-fill-mode: forwards
 		// .logo-letter-a
 		// 	fill: $black
 		// .sub
