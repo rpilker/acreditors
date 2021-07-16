@@ -30,7 +30,7 @@ module.exports = {
 		timings: true,
 	},
 	entry: [
-		'@babel/polyfill',
+		// '@babel/polyfill',
 		path.join(PATHS.js, 'main.js'),
 	],
 	output: {
@@ -76,23 +76,23 @@ module.exports = {
 		rules: [
 			{
 				enforce: 'pre',
-				test: /\.jsx?$/,
+				test: /\.js$/,
 				use: 'eslint-loader',
 				exclude: /node_modules/,
 			},
 			{
-				test: /\.(js|jsx)$/,
+				test: /\.js$/,
 				exclude: /node_modules/,
 				use: [{
-					loader: 'babel-loader',
+					loader: 'esbuild-loader',
 					options: {
-						cacheDirectory: false,
+						target: 'es2015',
 					},
 				}],
 			},
 			{
 				test: /\.pug$/,
-				use: ['pug-loader'],
+				use: ['simple-pug-loader'],
 			},
 			{
 				test: /\.(css|styl)$/,

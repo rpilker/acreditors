@@ -1,8 +1,9 @@
 @import	'~marx-css/styl/marx.styl'
 @import	'./vendor/rupture.styl'
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;0,600;1,400;1,600;1,900&display=swap')
-$secondary = #bb0022
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&display=swap')
 $primary = #8c0c0c
+$secondary = $primary
+// $secondary = #bb0022
 $black = #20292c
 $gray = #dfe3e5
 $dark-gray = #82878a
@@ -27,8 +28,8 @@ body
 	// font-family: 'Bodoni Moda', serif
 	font-family: 'Playfair Display', serif
 	h2
-		font-weight: 900!important
-		text-transform: lowercase
+		// font-weight: 900!important
+		// text-transform: lowercase
 		margin: 0
 		+above(700px)
 			font-size: 43px
@@ -43,9 +44,9 @@ body
 	position: fixed
 	left: 0
 	top: 20vh
-	height: 60vh
+	height: 460px
 	margin: 0 10px
-	z-index: 2
+	z-index: 1
 	+above(700px)
 		margin: 0 35px
 	+above(1280px)
@@ -59,7 +60,8 @@ body
 		display: block
 		width: 5px
 		height: calc(100% / 5)
-		margin: 1px 0
+		max-height: 90px
+		margin: 0 0 2px
 		a
 			display: block
 			width: 100%
@@ -87,33 +89,43 @@ img[data-full-size]
 	position: absolute
 .hidden
 	display: none
+span.sm
+	font-variant-caps: all-small-caps
 .l-header
 	width: 100%
 	max-width: 1280px
 	background-color: $white
 	position: fixed
-	bottom: 0
+	top: 0
+	padding-top: 90px
 	left: 0
 	display: grid
 	grid-template-columns: 0 100%
 	z-index: 2
 	margin: 0
-	border-top: 1px solid $black
+	transform: translateY(0)
+	transition: transform .5s ease-in-out
+	// border-top: 1px solid $black
+	&::after
+		content: ''
+		position: absolute
+		left: 0
+		bottom: 0
+		height: 1px
+		width: 100%
+		background-image: linear-gradient(60deg, rgba(0,0,0,0.1) 1%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 99%)
+	&.opening
+		transform: translateY(-90px)
+		&::after
+			background-image: linear-gradient(60deg, rgba(0,0,0,0) 1%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0) 99%)
 	+above(700px)
+		transform: translateY(-90px)
 		top: 0
-		bottom: auto
+		// bottom: auto
 		border-top: 0
 		padding-left: 80px
 		grid-template-columns: 170px calc(100% - 180px)
 		transition: .5s
-		&::after
-			content: ''
-			position: absolute
-			left: 0
-			bottom: 0
-			height: 1px
-			width: 100%
-			background-image: linear-gradient(60deg, rgba(0,0,0,0.1) 1%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 99%)
 		&.opening
 			border-color: $white
 	+above(1280px)
@@ -148,9 +160,11 @@ img[data-full-size]
 				height: 100%
 				a
 					padding: 10px 15px
-					text-transform: lowercase
+					font-size: 18px
+					line-height: 16px
+					// text-transform: lowercase
 					color: $dark-gray
-					font-weight: 900
+					// font-weight: 900
 					position: relative
 					display: block
 					&::before
@@ -217,6 +231,8 @@ img[data-full-size]
 			object-fit: contain
 		p
 			width: 100%
+			+above(700px)
+				font-size: 18px
 		strong
 			font-weight: 900
 #abertura
@@ -229,6 +245,11 @@ img[data-full-size]
 	+above(700px)
 		padding: 100px 15px 15px 80px
 		align-items: center
+	h2
+		visibility: hidden
+		top: calc(10% + 50px)
+		position: absolute
+		z-index: -1
 	.l-opening-image
 		width: 100%
 		height: 90%
@@ -246,9 +267,10 @@ img[data-full-size]
 	gap: 20px
 	// align-items: end
 	padding: 50px 5px 100px 15px
-	grid-template-areas: 'title title' 'text map'
-	grid-template-rows: 80px calc(100% - 80px)
-	grid-template-columns: calc(30% - 10px) calc(70% - 10px)
+	grid-template-areas: 'title title' 'text text' 'map map'
+	gap: 10px
+	grid-template-rows: 80px 120px calc(100% - 220px)
+	grid-template-columns: 100%
 	+above(700px)
 		grid-template-areas: 'title title' 'text map'
 		grid-template-rows: 80px calc(100% - 80px)
@@ -259,24 +281,74 @@ img[data-full-size]
 		grid-area: title
 	.slogan
 		grid-area: text
+		margin: 0
 	.mapa
 		grid-area: map
-		width: 150%
+		// width: 150%
 		height: 90%
 		display: block
-		z-index: -1
+		// z-index: -1
 		margin: 0
 		position: relative
 		overflow: hidden
-		margin-left: -50%
+		// margin-left: -50%
 		+above(700px)
 			width: 100%
-			margin-left: 0
-		img
+			// margin-left: 0
+		svg
 			width: 100%
 			height: 100%
 			max-width: none
 			object-fit: contain
+			path
+				stroke: $black
+				fill: $gray
+				&#mun_3550308
+					fill: $black
+		.tooltip
+			position: absolute
+			background-color: $white
+			color: $black
+			border: 1px solid $black
+			padding: 3px 5px
+			font-size: 21px
+			border-radius: 2px
+		.tooltip-back
+			fill: $white
+			stroke: $black
+			stroke-width: 1px
+		.tooltip
+		.tooltip-back
+			opacity: 0
+			transform-origin: 50%
+			transform: scale(0)
+			&.-show
+				opacity: 1
+				transform: scale(1)
+#produtos-e-solucoes
+	.text
+		align-items: unset
+		ul
+			padding-left: 50px
+	.solution
+		list-style-type: none
+		padding: .5em 0
+		position: relative
+		font-size: 21px
+		// ::marker
+		// 	font-weight: 900
+		&::before
+			content: ''
+			position: absolute
+			top: 24px
+			left: -15px
+			width: 5px
+			height: 5px
+			border-radius: 50%
+			background-color: $primary
+			// font-family: Arial, Helvetica, sans-serif
+			// font-weight: 900
+			// font-size: 1.4em
 #contato
 	.text
 		p
@@ -302,18 +374,18 @@ img[data-full-size]
 					margin-right: 10px
 					grid-area: icon
 				span
-					font-weight: 900
+					// font-weight: 900
 					// font-style: italic
 					font-size: 21px
 					line-height: 1em
 					vertical-align: middle
 					grid-area: title
 					color: $secondary
-					text-transform: lowercase
+					// text-transform: lowercase
 					& + span
 						color: $black
 						grid-area: desc
-						font-weight: 600
+						// font-weight: 600
 						font-size: 15px
 						line-height: 15px
 						// font-style: italic
@@ -332,9 +404,9 @@ img[data-full-size]
 		margin: 0
 		.c-tab-item
 			padding: 5px 10px
-			font-weight: 900!important
+			// font-weight: 900!important
 			color: $dark-gray
-			text-transform: lowercase
+			// text-transform: lowercase
 			position: relative
 	> .contents
 		font-size: 15px
@@ -385,12 +457,11 @@ footer
 	font-size: 12px
 	color: $black
 	background-color: $gray
-	padding-bottom: 50px
 	border: 0
 	margin: 0
-	+above(700px)
-		z-index: 4
-		position: relative
+	position: relative
+	z-index: 2
+	padding-bottom: 0
 	.l-footer-content
 		width: 100%
 		max-width: 1280px

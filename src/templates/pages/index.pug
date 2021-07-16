@@ -5,6 +5,14 @@ head
 	link(rel="icon", type="image/png", sizes="32x32", href="/favicon-32x32.png")
 	link(rel="icon", type="image/png", sizes="96x96", href="/favicon-96x96.png")
 	link(rel="icon", type="image/png", sizes="16x16", href="/favicon-16x16.png")
+	meta(property="og:url", content="https://www.acreditors.com/")
+	meta(property="og:type", content="website")
+	meta(property="og:title", content="ACreditors")
+	meta(property="og:description", content="Empresa Simples de Crédito")
+	meta(property="og:image", content="https://www.acreditors.com/test/images/acreditors-share.png")
+	meta(property="og:type", content="image/png")
+	meta(property="og:width", content="1200")
+	meta(property="og:height", content="628")
 body
 	main
 		.logo-bg.opening(data-opening)
@@ -40,30 +48,39 @@ body
 				li
 					a.nav-link(href="#contato") #[span Contato]
 		section.l-section#abertura
+			h2 ACreditors
 			p.slogan Acreditamos no seu #[strong potencial empreendedor]
 			figure.l-opening-image
-				img(src='./images/opening-th.jpg', data-full-size='./images/opening.jpg', width="1500", height="1000", alt="Fotografia noturna da Avenida Paulista",  title="Fotografia noturna da Avenida Paulista")
+				img(src='./images/opening-th.jpg', data-full-size='./images/opening.jpg', width="1500", height="1000", alt="Ponte Octávio Frias de Oliveria, a Ponte Estaiada",  title="Foto: Gabriel Ramos/Unsplash")
 		section.l-section#quem-somos
 			h2 Quem somos
 			.text
-				p A #[strong ACreditors] é uma empresa pequena e descompicada que acredita no seu potencial empreendedor oferecendo crédito personalizado com agilidade, segurança e respeito exclusivamente aos microempreendedores individuais, microempresas e empresas de pequeno porte localizadas na cidade de São Paulo e cidades limitrofes
+				//- p A #[strong ACreditors] é uma empresa pequena e descompicada que acredita no seu potencial empreendedor oferecendo crédito personalizado com agilidade, segurança e respeito exclusivamente aos microempreendedores individuais, microempresas e empresas de pequeno porte localizadas na cidade de São Paulo e cidades limitrofes
+				p A #[strong ACreditors] é uma empresa que oferece soluções de crédito descomplicadas, com rapidez e credibilidade, ppossibilitando aos nossos parceiros otimizar as finanças e promover conquistas.
+				p Buscamos ampliar nossa atuação no mercado e nos tornarmos referência, por meio da excelência dos serviços prestados aos microempreendedores individuais (#[span.sm MEI]), microempresas (#[span.sm ME]) e empresas de pequeno porte (#[span.sm EPP]) localizadas na cidade de São Paulo e municípios vizinhos.
+				p Trabalhamos com valores acima de #[span.sm R$] 500,00 e prazo de ate 12 meses.
 		section.l-section#produtos-e-solucoes
 			h2 Produtos e soluções
-			.c-tab-nav
-				nav
-					ul.tabs(role="tablist")
-						li.c-tab-item(data-value="1", role="tab", aria-setsize="2", aria-posinset="1") Capital de giro
-						li.c-tab-item(data-value="2", role="tab", aria-setsize="2", aria-posinset="2") Investimento
-				.contents
-					.tab-content(data-value="1", role="tabpanel")
-						p Sua empresa tem recursos disponíveis em caixa, porém precisa de uma ajuda extra com as despesas operacionais, como pagamento de impostos, salários e demais custos. Podemos antecipar os pagamentos a receber por meio de #[strong duplicatas] ou #[strong cheques] de seus clientes. Garantindo fôlego para o fluxo financeiro
-					.tab-content(data-value="2", role="tabpanel")
-						p Escolha as condições de #[strong empréstimo] ideais para expandir seu nogócio, facilitando a compra de matéia-prima, equipamentos ou uma maior quantidade de produtos para atender com rapidez a demanda dos seus clientes
+			.text
+				ul
+					li.solution Empréstimo
+					li.solution Desconto de duplicatas ou cheques
+					li.solution Financiamento
+			//- .c-tab-nav
+			//- 	nav
+			//- 		ul.tabs(role="tablist")
+			//- 			li.c-tab-item(data-value="1", role="tab", aria-setsize="2", aria-posinset="1") Capital de giro
+			//- 			li.c-tab-item(data-value="2", role="tab", aria-setsize="2", aria-posinset="2") Investimento
+			//- 	.contents
+			//- 		.tab-content(data-value="1", role="tabpanel")
+			//- 			p Sua empresa tem recursos disponíveis em caixa, porém precisa de uma ajuda extra com as despesas operacionais, como pagamento de impostos, salários e demais custos. Podemos antecipar os pagamentos a receber por meio de #[strong duplicatas] ou #[strong cheques] de seus clientes. Garantindo fôlego para o fluxo financeiro
+			//- 		.tab-content(data-value="2", role="tabpanel")
+			//- 			p Escolha as condições de #[strong empréstimo] ideais para expandir seu nogócio, facilitando a compra de matéia-prima, equipamentos ou uma maior quantidade de produtos para atender com rapidez a demanda dos seus clientes
 		section.l-section#onde-estamos
 			h2 Onde estamos
-			.slogan Atendemos na cidade de #[strong São Paulo] e cidades limitrofes
-			fgure.mapa
-				img(src="./images/mapa.svg")
+			.slogan Atendemos em todas as cidades da #[strong Região Metropolitana de São Paulo]
+			figure.mapa
+				include ../includes/map.pug
 		section.l-section#contato
 			h2 Contato
 			.text
@@ -87,9 +104,11 @@ body
 	footer
 		.l-footer-content
 			.social
-				include ../includes/logo.pug
-			p.text Prazo de pagamento: de X a XX meses. De X,XX% a.m. (XX,XX% a.a.) a X,XX% a.m. (XXX,XX% a.a.). Exemplo: um empréstimo de R$ XX.XXX,XX com pagamento em 12 parcelas R$ X.XXX,XX. O valor total a ser pago será de R$ XX.XXX,XX, com juros de X,XX% a.m. e CET de X,XX% a.m.. Não cobramos taxa de abertura de capital nem outras taxas apenas o valor do juros de acordo com analise de credito e garantia. A BeCrédito realiza operações de empréstimo, de financiamento e de desconto de títulos de crédito, exclusivamente com recursos próprios, para Microempreendedores Individuais (MEI), microempresas (ME) e empresas de pequeno porte (EPP) optantes do Simples Nacional situados na cidade de São Paulou ou municípios limítrofes. Para mais informações, consulte a Lei Complementar Nº 167, de 24 de abril de 2019.
+				svg(xmlns='http://www.w3.org/2000/svg' width='300' height='60' viewbox='0 0 300 60' xmlns:xlink="http://www.w3.org/1999/xlink")
+					use(xlink:href="#acreditors-logo")
+			p.text A #[strong ACreditors] não cobra taxa de abertura de capital (TAC), nem outras taxas, apenas o valor dos juros após análise de crédito personalizada, de acordo com o seu perfil e o produto escolhido. Caso alguém, se passando pela #[strong ACreditors], solicite qualquer depósito antecipado para aprovar ou depositar seu empréstimo ou desconto de títulos de crédito, encerre o contato e fale com a gente. Você pode estar sendo vítima de uma tentativa de fraude. Para mais informações, consulte a Lei Complementar N⁰ 167, de 24 de abril de 2019.
 			hr
 			p © 2021 ACreditors - Empresa Simples de Crédito. Todos os direitos reservados
 	.loading
-		include ../includes/logo.pug
+		svg(xmlns='http://www.w3.org/2000/svg' width='300' height='60' viewbox='0 0 300 60' xmlns:xlink="http://www.w3.org/1999/xlink")
+			use(xlink:href="#acreditors-logo")

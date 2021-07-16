@@ -23,7 +23,6 @@ module.exports = {
 		chunkModules: false,
 	},
 	entry: [
-		'@babel/polyfill',
 		path.join(PATHS.js, 'main.js'),
 	],
 	output: {
@@ -58,16 +57,6 @@ module.exports = {
 				to: 'images',
 				ignore: ['.gitkeep'],
 			},
-			{
-				from: path.join(PATHS.src, 'assets/json'),
-				to: 'json',
-				ignore: ['.gitkeep'],
-			},
-			{
-				from: path.join(PATHS.src, '../others/**/*'),
-				to: '[path][name].[ext]',
-				ignore: ['.gitkeep'],
-			},
 		]),
 	],
 	module: {
@@ -87,7 +76,7 @@ module.exports = {
 			},
 			{
 				test: /\.pug$/,
-				use: ['pug-loader'],
+				use: ['simple-pug-loader'],
 			},
 			{
 				test: /\.(css|styl)$/,
@@ -117,17 +106,6 @@ module.exports = {
 						loader: 'file-loader',
 						options: {
 							name: '../images/[name].[ext]',
-						},
-					},
-				],
-			},
-			{
-				test: /\.(json|geojson)$/,
-				use: [
-					{
-						loader: 'file-loader',
-						options: {
-							name: '../json/[name].[ext]',
 						},
 					},
 				],
