@@ -2,6 +2,79 @@
 import '../style/main.styl';
 import scrollMonitor from 'scrollmonitor';
 
+class Tabs {
+	constructor(selector) {
+		this.element = document.querySelector(selector);
+		[...this.element.querySelectorAll('.c-tab-item')].forEach((el, i, arr) => {
+			if (!i) {
+				this.setValue(el.dataset.value);
+			}
+			el.setAttribute('tabIndex', 0);
+			el.addEventListener('click', () => {
+				this.setValue(el.dataset.value);
+			}, null);
+			// el.addEventListener('mouseenter', () => {
+			// 	this.setValue(el.dataset.value);
+			// }, null);
+			el.addEventListener('keydown', (event) => {
+				// this.setValue(el.dataset.value);
+				const focusNext = () => {
+					if (arr[i + 1]) {
+						arr[i + 1].focus();
+					} else {
+						arr[0].focus();
+					}
+				};
+				const focusPrev = () => {
+					if (arr[i - 1]) {
+						arr[i - 1].focus();
+					} else {
+						arr[arr.length - 1].focus();
+					}
+				};
+				switch (event.code) {
+				case 'Space':
+				case 'Enter':
+					this.setValue(el.dataset.value);
+					event.preventDefault();
+					break;
+				case 'ArrowDown':
+					focusNext();
+					event.preventDefault();
+					break;
+				case 'ArrowUp':
+					focusPrev();
+					event.preventDefault();
+					break;
+				default:
+					console.log(event.code);
+					break;
+				}
+			}, null);
+		});
+	}
+
+	setValue(value) {
+		this.value = value;
+		this.current = this.element.querySelector(`.c-tab-item[data-value="${value}"]`);
+		[...this.element.querySelectorAll('.-current')].forEach((el) => {
+			el.classList.remove('-current');
+			if (el.classList.contains('c-tab-item')) {
+				el.setAttribute('aria-selected', 'false');
+			} else {
+				el.setAttribute('aria-hidden', 'true');
+			}
+		});
+		this.element.querySelector(`.tab-content[data-value="${value}"]`).classList.add('-current');
+		this.element.querySelector(`.tab-content[data-value="${value}"]`).setAttribute('aria-hidden', 'false');
+		this.current.classList.add('-current');
+		this.current.setAttribute('aria-selected', 'true');
+	}
+}
+
+// eslint-disable-next-line no-new
+new Tabs('.c-tab-nav');
+
 Math.easeInOutQuad = (t, b, c, d) => {
 	t /= d / 2;
 	if (t < 1) return c / 2 * t * t + b;

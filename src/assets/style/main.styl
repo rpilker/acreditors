@@ -59,9 +59,8 @@ body
 	li
 		display: block
 		width: 5px
-		height: calc(100% / 5)
-		max-height: 90px
 		margin: 0 0 2px
+		height: auto
 		a
 			display: block
 			width: 100%
@@ -69,11 +68,13 @@ body
 			background-color: $gray
 			transition: .15s
 			transform-origin: 0 0
+			height: 90px
 			&:hover
 				transform: scaleX(1.5)
 				background-color: $secondary
 			&.-is-active
 				background-color: $secondary
+				height: 120px
 			> span
 				display: none
 img[data-full-size]
@@ -354,6 +355,10 @@ span.sm
 		p
 			// & + p
 			// 	border-top: 1px solid $black
+			&.contact
+				margin-top: 1em
+				+ .contact
+					margin-top: 0
 			a
 				color: $black
 				line-height: 1.5em

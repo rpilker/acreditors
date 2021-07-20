@@ -2,28 +2,29 @@
 	0%
 		transform: scale(1)
 	100%
-		transform: scale(15)
+		transform: scale(1.5)
 
 .logo-bg
 .logo-bg2
 .logo-fg
 	background-color: $primary
-	width: 170px
-	height 90px
+	width: 130px
+	height 45px
 	top: 0
 	left: 20px
 	// left: calc(15px + 80px)
 	position: fixed
 	transform-origin: 0 0
-	transition: transform .5s ease-in-out, height .5s ease-in-out
+	transition: transform .5s ease-in-out, height .5s ease-in-out, opacity .5s ease-in-out
 	z-index: 3
+	transform: scale(2)
 	+above(700px)
 		left: 95px
-		mix-blend-mode: unset
+		// mix-blend-mode: unset
 	+above(1280px)
 		left: calc(((100% - 1280px) / 2) + 15px + 80px)
 	&.opening
-		height 60px
+		// height 60px
 		transform: translateY(20vh) scale(2)
 		+below(370px)
 			transform: translateY(20vh) scale(1.7)
@@ -38,13 +39,18 @@
 		width: 100%
 .logo-bg
 	// transform: skew(-10deg, 0) scaleX(1.1)
+	mix-blend-mode: multiply
 	&.opening
-		mix-blend-mode: luminosity
 		opacity: .6
+	// 	+above(700px)
+	// 		opacity: 1
+	// 		// mix-blend-mode: unset
 .logo-bg2
 	// transform: skew(-10deg, 0) scaleX(1.1)
-	&.opening
-		mix-blend-mode: color
+	mix-blend-mode: color
+	// &.opening
+	// 	+above(700px)
+	// 		// mix-blend-mode: unset
 @keyframes logo
 	0%
 		transform: scale(1)
@@ -53,19 +59,19 @@
 		display: block
 		visibility: visible
 	99%
-		transform: scale(5)
+		transform: scale(3)
 		opacity: 0
 		filter: blur(5px)
 		visibility: visible
 	100%
-		transform: scale(5)
+		transform: scale(3)
 		opacity: 0
 		filter: blur(5px)
 		visibility: hidden
 .loading
 	width: 100%
 	height: 100%
-	mix-blend-mode: unset
+	// mix-blend-mode: unset
 	left: 0
 	position: fixed
 	top: 0
@@ -88,14 +94,14 @@
 		svg
 			animation-name: zoom-in
 			animation-delay: .5s
-			animation-duration: 2s
+			animation-duration: 1.5s
 			animation-timing-function: ease-in
 			animation-fill-mode: forwards
 
 .soon
 	width: 100%
 	height: 100%
-	mix-blend-mode: unset
+	// mix-blend-mode: unset
 	left: 0
 	position: fixed
 	top: 0
@@ -111,7 +117,7 @@
 		max-width: 300px
 		animation-name: zoom-in
 		animation-delay: .5s
-		animation-duration: 3.5s
+		animation-duration: 1s
 		animation-timing-function: ease-in
 		animation-fill-mode: forwards
 		// .logo-letter-a

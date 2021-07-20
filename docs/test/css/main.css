@@ -731,26 +731,25 @@ body main {
 .logo-bg2,
 .logo-fg {
   background-color: #8c0c0c;
-  width: 130px;
-  height: 45px;
+  width: 170px;
+  height: 90px;
   top: 0;
   left: 20px;
   position: fixed;
   -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
-  -webkit-transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
-  transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out, height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out, height 0.5s ease-in-out, opacity 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  -webkit-transition: height 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  transition: height 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, height 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, height 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   z-index: 3;
-  -webkit-transform: scale(2);
-          transform: scale(2);
 }
 @media only screen and (min-width: 700px) {
   .logo-bg,
   .logo-bg2,
   .logo-fg {
     left: 95px;
+    mix-blend-mode: unset;
   }
 }
 @media only screen and (min-width: 1280px) {
@@ -763,6 +762,7 @@ body main {
 .logo-bg.opening,
 .logo-bg2.opening,
 .logo-fg.opening {
+  height: 60px;
   -webkit-transform: translateY(20vh) scale(2);
           transform: translateY(20vh) scale(2);
 }
@@ -791,18 +791,17 @@ body main {
   fill: #fff;
   width: 100%;
 }
-.logo-bg {
-  mix-blend-mode: multiply;
-}
 .logo-bg.opening {
+  mix-blend-mode: luminosity;
   opacity: 0.6;
 }
-.logo-bg2 {
+.logo-bg2.opening {
   mix-blend-mode: color;
 }
 .loading {
   width: 100%;
   height: 100%;
+  mix-blend-mode: unset;
   left: 0;
   position: fixed;
   top: 0;
@@ -837,8 +836,8 @@ body main {
           animation-name: zoom-in;
   -webkit-animation-delay: 0.5s;
           animation-delay: 0.5s;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
   -webkit-animation-timing-function: ease-in;
           animation-timing-function: ease-in;
   -webkit-animation-fill-mode: forwards;
@@ -847,6 +846,7 @@ body main {
 .soon {
   width: 100%;
   height: 100%;
+  mix-blend-mode: unset;
   left: 0;
   position: fixed;
   top: 0;
@@ -874,8 +874,8 @@ body main {
           animation-name: zoom-in;
   -webkit-animation-delay: 0.5s;
           animation-delay: 0.5s;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 3.5s;
+          animation-duration: 3.5s;
   -webkit-animation-timing-function: ease-in;
           animation-timing-function: ease-in;
   -webkit-animation-fill-mode: forwards;
@@ -893,8 +893,8 @@ body main {
             transform: scale(1);
   }
   100% {
-    -webkit-transform: scale(1.5);
-            transform: scale(1.5);
+    -webkit-transform: scale(15);
+            transform: scale(15);
   }
 }
 @keyframes zoom-in {
@@ -903,8 +903,8 @@ body main {
             transform: scale(1);
   }
   100% {
-    -webkit-transform: scale(1.5);
-            transform: scale(1.5);
+    -webkit-transform: scale(15);
+            transform: scale(15);
   }
 }
 @-webkit-keyframes logo {
@@ -918,16 +918,16 @@ body main {
     visibility: visible;
   }
   99% {
-    -webkit-transform: scale(3);
-            transform: scale(3);
+    -webkit-transform: scale(5);
+            transform: scale(5);
     opacity: 0;
     -webkit-filter: blur(5px);
             filter: blur(5px);
     visibility: visible;
   }
   100% {
-    -webkit-transform: scale(3);
-            transform: scale(3);
+    -webkit-transform: scale(5);
+            transform: scale(5);
     opacity: 0;
     -webkit-filter: blur(5px);
             filter: blur(5px);
@@ -945,16 +945,16 @@ body main {
     visibility: visible;
   }
   99% {
-    -webkit-transform: scale(3);
-            transform: scale(3);
+    -webkit-transform: scale(5);
+            transform: scale(5);
     opacity: 0;
     -webkit-filter: blur(5px);
             filter: blur(5px);
     visibility: visible;
   }
   100% {
-    -webkit-transform: scale(3);
-            transform: scale(3);
+    -webkit-transform: scale(5);
+            transform: scale(5);
     opacity: 0;
     -webkit-filter: blur(5px);
             filter: blur(5px);
@@ -988,9 +988,8 @@ body main {
 .l-aside-nav li {
   display: block;
   width: 5px;
-  height: calc(100% / 5);
-  max-height: 90px;
   margin: 0 0 2px;
+  height: auto;
 }
 .l-aside-nav li a {
   display: block;
@@ -1001,6 +1000,7 @@ body main {
   transition: 0.15s;
   -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
+  height: 90px;
 }
 .l-aside-nav li a:hover {
   -webkit-transform: scaleX(1.5);
@@ -1009,6 +1009,7 @@ body main {
 }
 .l-aside-nav li a.-is-active {
   background-color: #8c0c0c;
+  height: 120px;
 }
 .l-aside-nav li a > span {
   display: none;
@@ -1390,6 +1391,12 @@ span.sm {
   height: 5px;
   border-radius: 50%;
   background-color: #8c0c0c;
+}
+#contato .text p.contact {
+  margin-top: 1em;
+}
+#contato .text p.contact + .contact {
+  margin-top: 0;
 }
 #contato .text p a {
   color: #20292c;
