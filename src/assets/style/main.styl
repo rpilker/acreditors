@@ -268,34 +268,35 @@ span.sm
 	gap: 20px
 	// align-items: end
 	padding: 50px 5px 100px 15px
-	grid-template-areas: 'title title' 'text text' 'map map'
+	grid-template-areas: 'title' 'map' 'text' 'table'
 	gap: 10px
-	grid-template-rows: 80px 120px calc(100% - 220px)
+	grid-template-rows: 50px calc((100% - 175px) / 2) 95px calc((100% - 175px) / 2)
 	grid-template-columns: 100%
 	+above(700px)
-		grid-template-areas: 'title title' 'text map'
-		grid-template-rows: 80px calc(100% - 80px)
+		grid-template-areas: 'title title' 'text map' 'table map'
+		grid-template-rows: 80px calc(50% - 90px) calc(50% - 90px)
 		grid-template-columns: calc(30% - 10px) calc(70% - 10px)
 		padding: 100px 15px 15px 80px
 		align-items: center
+
 	h2
 		grid-area: title
 	.slogan
 		grid-area: text
 		margin: 0
+		font-size: 18px
+		+above(700px)
+			width: 100%
+			font-size: 23px
 	.mapa
 		grid-area: map
-		// width: 150%
 		height: 90%
 		display: block
-		// z-index: -1
 		margin: 0
 		position: relative
 		overflow: hidden
-		// margin-left: -50%
 		+above(700px)
-			width: 100%
-			// margin-left: 0
+			font-size: 23px
 		svg
 			width: 100%
 			height: 100%
@@ -326,6 +327,31 @@ span.sm
 			&.-show
 				opacity: 1
 				transform: scale(1)
+	.table
+		grid-area: table
+		overflow-x: hidden
+		overflow-y: auto
+		height: 100%
+		width: 100%
+		table
+			width: 100%
+			+below(699px)
+				display: block
+				border: 0
+			tr
+				+below(699px)
+					display: inline-block
+					margin-bottom: 0
+					& + tr
+						&::after
+							content: ',\00a0'
+				td
+					padding: 10px 0
+					font-size: 15px
+					+below(699px)
+						display: inline-block
+						border: 0
+						padding: 0
 #produtos-e-solucoes
 	.text
 		align-items: unset

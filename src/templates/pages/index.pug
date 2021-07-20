@@ -22,9 +22,7 @@ html(lang="pt-BR")
 			.logo-bg.opening(data-opening)
 			.logo-bg2.opening(data-opening)
 			.logo-fg.opening(data-opening)
-				a.nav-link(href="#abertura")
-					h1.logo
-						span.hidden ACreditors - Empresa Simples de Crédito
+				a.nav-link(href="#abertura", aria-label="Abertura")
 					include ../includes/logo.pug
 			header.l-header.opening(data-opening)
 				h1.logo
@@ -44,15 +42,15 @@ html(lang="pt-BR")
 			nav.l-aside-nav
 				ul
 					li
-						a.nav-link(href="#abertura") #[span Abertura]
+						a.nav-link(href="#abertura", aria-label="Abertura")
 					li
-						a.nav-link(href="#quem-somos") #[span Quem somos]
+						a.nav-link(href="#quem-somos", aria-label="Quem somos")
 					li
-						a.nav-link(href="#onde-estamos") #[span Onde estamos]
+						a.nav-link(href="#onde-estamos", aria-label="Onde estamos")
 					li
-						a.nav-link(href="#produtos-e-solucoes") #[span Soluções]
+						a.nav-link(href="#produtos-e-solucoes", aria-label="Soluções")
 					li
-						a.nav-link(href="#contato") #[span Contato]
+						a.nav-link(href="#contato", aria-label="Contato")
 			section.l-section#abertura
 				h2 ACreditors
 				p.slogan Acreditamos no seu #[strong potencial empreendedor]
@@ -67,9 +65,90 @@ html(lang="pt-BR")
 					//- p Buscamos ampliar nossa atuação no mercado e nos tornarmos referência, por meio da excelência dos serviços prestados aos microempreendedores individuais (#[span.sm MEI]), microempresas (#[span.sm ME]) e empresas de pequeno porte (#[span.sm EPP]) localizadas na cidade de São Paulo e municípios vizinhos.
 			section.l-section#onde-estamos
 				h2 Onde estamos
-				.slogan Atendemos em todas as cidades da #[strong Região Metropolitana de São Paulo]
+				.slogan Atendemos em #[strong São Paulo] e cidades vizinhas.
 				figure.mapa
 					include ../includes/map.pug
+				.table
+					table
+						tbody
+							tr
+								td Arujá
+							tr
+								td Barueri
+							tr
+								td Biritiba Mirim
+							tr
+								td Caieiras
+							tr
+								td Cajamar
+							tr
+								td Carapicuíba
+							tr
+								td Cotia
+							tr
+								td Diadema
+							tr
+								td Embu das Artes
+							tr
+								td Embu-Guaçu
+							tr
+								td Ferraz de Vasconcelos
+							tr
+								td Francisco Morato
+							tr
+								td Franco da Rocha
+							tr
+								td Guararema
+							tr
+								td Guarulhos
+							tr
+								td Itapecerica da Serra
+							tr
+								td Itapevi
+							tr
+								td Itaquaquecetuba
+							tr
+								td Jandira
+							tr
+								td Juquitiba
+							tr
+								td Mairiporã
+							tr
+								td Mauá
+							tr
+								td Mogi das Cruzes
+							tr
+								td Osasco
+							tr
+								td Pirapora do Bom Jesus
+							tr
+								td Poá
+							tr
+								td Ribeirão Pires
+							tr
+								td Rio Grande da Serra
+							tr
+								td Salesópolis
+							tr
+								td Santa Isabel
+							tr
+								td Santana de Parnaíba
+							tr
+								td Santo André
+							tr
+								td São Bernardo do Campo
+							tr
+								td São Caetano do Sul
+							tr
+								td São Lourenço da Serra
+							tr
+								td São Paulo
+							tr
+								td Suzano
+							tr
+								td Taboão da Serra
+							tr
+								td Vargem Grande Paulista
 			section.l-section#produtos-e-solucoes
 				h2 Produtos e soluções
 				//- .text

@@ -1289,16 +1289,16 @@ span.sm {
   grid-gap: 20px;
   gap: 20px;
   padding: 50px 5px 100px 15px;
-  grid-template-areas: 'title title' 'text text' 'map map';
+  grid-template-areas: 'title' 'map' 'text' 'table';
   grid-gap: 10px;
   gap: 10px;
-  grid-template-rows: 80px 120px calc(100% - 220px);
+  grid-template-rows: 50px calc((100% - 175px) / 2) 95px calc((100% - 175px) / 2);
   grid-template-columns: 100%;
 }
 @media only screen and (min-width: 700px) {
   #onde-estamos {
-    grid-template-areas: 'title title' 'text map';
-    grid-template-rows: 80px calc(100% - 80px);
+    grid-template-areas: 'title title' 'text map' 'table map';
+    grid-template-rows: 80px calc(50% - 90px) calc(50% - 90px);
     grid-template-columns: calc(30% - 10px) calc(70% - 10px);
     padding: 100px 15px 15px 80px;
     -webkit-box-align: center;
@@ -1312,6 +1312,13 @@ span.sm {
 #onde-estamos .slogan {
   grid-area: text;
   margin: 0;
+  font-size: 18px;
+}
+@media only screen and (min-width: 700px) {
+  #onde-estamos .slogan {
+    width: 100%;
+    font-size: 23px;
+  }
 }
 #onde-estamos .mapa {
   grid-area: map;
@@ -1323,7 +1330,7 @@ span.sm {
 }
 @media only screen and (min-width: 700px) {
   #onde-estamos .mapa {
-    width: 100%;
+    font-size: 23px;
   }
 }
 #onde-estamos .mapa svg {
@@ -1367,6 +1374,42 @@ span.sm {
   opacity: 1;
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+#onde-estamos .table {
+  grid-area: table;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+}
+#onde-estamos .table table {
+  width: 100%;
+}
+@media only screen and (max-width: 699px) {
+  #onde-estamos .table table {
+    display: block;
+    border: 0;
+  }
+}
+@media only screen and (max-width: 699px) {
+  #onde-estamos .table table tr {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+  #onde-estamos .table table tr + tr::after {
+    content: ',\00a0';
+  }
+}
+#onde-estamos .table table tr td {
+  padding: 10px 0;
+  font-size: 15px;
+}
+@media only screen and (max-width: 699px) {
+  #onde-estamos .table table tr td {
+    display: inline-block;
+    border: 0;
+    padding: 0;
+  }
 }
 #produtos-e-solucoes .text {
   -webkit-box-align: unset;
