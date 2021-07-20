@@ -28,10 +28,10 @@ html(lang="pt-BR")
 					include ../includes/logo.pug
 			header.l-header.opening(data-opening)
 				h1.logo
-					span.hidden ACreditors - Empresa Simples de Crédito
+					span.sr-only ACreditors - Empresa Simples de Crédito
 					//- a.nav-link(href="#abertura")
 					//- 	include ../includes/logo.pug
-				nav.l-header-nav.opening(data-opening)
+				.l-header-nav.opening(data-opening)
 					ul
 						li
 							a.nav-link.-header(href="#quem-somos") Quem somos
@@ -41,7 +41,7 @@ html(lang="pt-BR")
 							a.nav-link.-header(href="#produtos-e-solucoes") Soluções
 						li
 							a.nav-link.-header(href="#contato") Contato
-			nav.l-aside-nav
+			.l-aside-nav
 				ul
 					li
 						a.nav-link(href="#abertura", aria-label="Abertura")
@@ -57,7 +57,8 @@ html(lang="pt-BR")
 				h2 ACreditors
 				p.slogan Acreditamos no seu #[strong potencial empreendedor]
 				figure.l-opening-image
-					img(src='./images/opening-th.jpg', data-full-size='./images/opening.jpg', width="1500", height="1000", alt="Ponte Octávio Frias de Oliveria, a Ponte Estaiada",  title="Foto: Gabriel Ramos/Unsplash")
+					img(src='./images/opening-th.jpg', data-full-size='./images/opening.jpg', width="300", height="300", alt="Ponte Octávio Frias de Oliveria, a Ponte Estaiada",  title="Foto: Gabriel Ramos/Unsplash")
+					figcaption.sr-only Ponte Octávio Frias de Oliveria, a Ponte Estaiada
 			section.l-section#quem-somos
 				h2 Quem somos
 				.text
@@ -67,11 +68,14 @@ html(lang="pt-BR")
 					//- p Buscamos ampliar nossa atuação no mercado e nos tornarmos referência, por meio da excelência dos serviços prestados aos microempreendedores individuais (#[span.sm MEI]), microempresas (#[span.sm ME]) e empresas de pequeno porte (#[span.sm EPP]) localizadas na cidade de São Paulo e municípios vizinhos.
 			section.l-section#onde-estamos
 				h2 Onde estamos
-				.slogan Atendemos em #[strong São Paulo] e cidades vizinhas.
-				figure.mapa
+				.slogan#onde-estamos-text Atendemos em todas as cidades da #[strong Região Metropolitana de São Paulo].
+				figure.mapa(aria-labelledby="onde-estamos-text")
 					include ../includes/map.pug
 				.table
 					table
+						thead
+							tr
+								th.sr-only Cidades onde atendemos
 						tbody
 							tr
 								td Arujá
@@ -161,39 +165,43 @@ html(lang="pt-BR")
 				.c-tab-nav
 					nav
 						ul.tabs(role="tablist")
-							li.c-tab-item(data-value="1", role="tab", aria-setsize="2", aria-posinset="1") Capital de giro
-							li.c-tab-item(data-value="2", role="tab", aria-setsize="2", aria-posinset="2") Empréstimo
+							li.c-tab-item(data-value="1", role="tab", aria-setsize="3", aria-posinset="1") Capital de giro
+							li.c-tab-item(data-value="2", role="tab", aria-setsize="3", aria-posinset="2") Empréstimo
+							li.c-tab-item(data-value="3", role="tab", aria-setsize="3", aria-posinset="32") Maquininha de cartao
 					.contents
-						.tab-content(data-value="1", role="tabpanel")
-							p Sua empresa tem recursos disponíveis em caixa, porém precisa de uma ajuda extra com as despesas operacionais, como pagamento de impostos, salários e demais custos. Podemos antecipar os pagamentos a receber por meio de #[strong duplicatas] ou #[strong cheques] de seus clientes. Garantindo fôlego para o fluxo financeiro
-						.tab-content(data-value="2", role="tabpanel")
-							p Escolha o investimento ideal para expandir o seu negócio, há possibilidade de #[strong financiar] a compra de equipamentos, ou fazer um #[strong empréstimo] para negociar o melhor preço junto ao seu fornecedor na compra de matéria-prima, ou uma maior quantidade de produtos para atender com rapidez, a demanda do seus clientes
+						.tab-content(data-value="1", role="tabpanel", aria-label="Capital de giro")
+							p Sua empresa tem recursos disponíveis em caixa, porém precisa de uma ajuda extra com as despesas operacionais como pagamento de impostos, salários e demais custos, podemos antecipar os pagamentos a receber por meio de #[strong duplicatas] ou #[strong cheques] de seus clientes. Garantindo fôlego para o fluxo financeiro
+						.tab-content(data-value="2", role="tabpanel", aria-label="Empréstimo")
+							p Escolha o investimento ideal para expandir o seu negócio. Há possibilidade de #[strong financiar] a compra de equipamentos, ou fazer um #[strong empréstimo] para negociar o melhor preço junto ao seu fornecedor na compra de matéria-prima, ou uma maior quantidade de produtos para atender com rapidez, a demanda do seus clientes.
+						.tab-content(data-value="3", role="tabpanel", aria-label="Maquininha de cartao")
+							p Nossa maquininha é sem custo e sem taxa de aluguel. Com ela podemos antecipar seus créditos à vista ou parcelados. Também, direto da maquininha, utilizando o limite do cartão de crédito, podemos parcelar em até 18 vezes o seu empréstimo.
 			section.l-section#contato
 				h2 Contato
 				.text
 					p Solicite uma simulação. Respondemos em menos de 1 hora. Após nossa avaliação financeira encaminhamos o contrato para assinatura e, com tudo aprovado, o dinheiro já será liberado.
 					p.contact
 						a(href="https://api.whatsapp.com/send?phone=5511999083883&text=Ola%2C%20Gizelle%2C%20tudo%20bem%3F%0AGostaria%20de%20uma%20simula%C3%A7%C3%A3o%20de%20cr%C3%A9dito", target="_blank")
-							img(src="./images/whatsapp.svg", alt="WhastApp" width="70" height="70")
+							img(src="./images/whatsapp.svg", aria-hidden="true", alt="WhastApp" width="70" height="70", rel="noopener")
 							span WhatsApp
 							span 11 9 9908 3883
 					//- p
 					//- 	a(href="tel:5511999999087", target="_blank") fone
 					p.contact
-						a(href="mailto:gizelle@acreditors.com?subject=Empr%C3%A9stimo&body=Ola%2C%20Gizelle%2C%20tudo%20bem%3F%0AGostaria%20de%20uma%20simula%C3%A7%C3%A3o%20de%20cr%C3%A9dito", target="_blank")
-							img(src="./images/mail.svg", alt="Email" width="70" height="70")
+						a(href="mailto:gizelle@acreditors.com?subject=Empr%C3%A9stimo&body=Ola%2C%20Gizelle%2C%20tudo%20bem%3F%0AGostaria%20de%20uma%20simula%C3%A7%C3%A3o%20de%20cr%C3%A9dito", target="_blank", rel="noopener")
+							img(src="./images/mail.svg", aria-hidden="true", alt="Email" width="70" height="70")
 							span Email
 							span gizelle@acreditors.com
 					p.contact
-						a(href="https://www.instagram.com/acreditors_credito/", target="_blank")
-							img(src="./images/instagram.svg", alt="Instagram" width="70" height="70")
+						a(href="https://www.instagram.com/acreditors_credito/", target="_blank", rel="noopener")
+							img(src="./images/instagram.svg", aria-hidden="true", alt="Instagram" width="70" height="70")
 							span Instagram
 							span @acreditors_credito
 		footer
 			.l-footer-content
 				.social
-					svg(xmlns='http://www.w3.org/2000/svg' width='300' height='60' viewbox='0 0 300 60' xmlns:xlink="http://www.w3.org/1999/xlink")
-						use(xlink:href="#acreditors-logo")
+					a(href='#abertura', aria-label="Voltar ao topo")
+						svg(xmlns='http://www.w3.org/2000/svg' width='300' aria-hidden="true" height='60' viewbox='0 0 300 60' xmlns:xlink="http://www.w3.org/1999/xlink")
+							use(xlink:href="#acreditors-logo")
 				p.text A #[strong ACreditors] não cobra taxa de abertura de capital (TAC), nem outras taxas, apenas o valor dos juros após análise de crédito personalizada, de acordo com o seu perfil e o produto escolhido. Caso alguém, se passando pela #[strong ACreditors], solicite qualquer depósito antecipado para aprovar ou depositar seu empréstimo ou desconto de títulos de crédito, encerre o contato e fale com a gente. Você pode estar sendo vítima de uma tentativa de fraude. Para mais informações, consulte a Lei Complementar N⁰ 167, de 24 de abril de 2019.
 				hr
 				p © 2021 ACreditors - Empresa Simples de Crédito. Todos os direitos reservados

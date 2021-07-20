@@ -694,6 +694,16 @@ tfoot td {
   font-style: italic;
   padding: 16px 4px;
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 *,
 *:after,
 *:before,
@@ -980,6 +990,8 @@ body main {
   }
 }
 .l-aside-nav ul {
+  list-style: none;
+  padding: 0;
   margin: 0;
   position: relative;
   height: 100%;
@@ -995,7 +1007,7 @@ body main {
   display: block;
   width: 100%;
   height: 100%;
-  background-color: $gray-dark;
+  background-color: #dfe3e5;
   -webkit-transition: 0.15s;
   transition: 0.15s;
   -webkit-transform-origin: 0 0;
@@ -1010,6 +1022,11 @@ body main {
 .l-aside-nav li a.-is-active {
   background-color: #8c0c0c;
   height: 120px;
+}
+@media only screen and (max-width: 370px) {
+  .l-aside-nav li a.-is-active {
+    height: 102px;
+  }
 }
 .l-aside-nav li a > span {
   display: none;
@@ -1587,10 +1604,15 @@ footer .l-footer-content {
   margin: 0 auto;
   padding: 30px 40px;
 }
-footer .l-footer-content .social svg {
+footer .l-footer-content .social a {
+  color: #20292c;
+  display: block;
   max-width: 150px;
   display: block;
   margin: 0 auto 0 0;
+}
+footer .l-footer-content .social svg {
+  width: 100%;
 }
 footer .l-footer-content hr {
   margin: 0 auto;

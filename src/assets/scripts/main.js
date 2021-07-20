@@ -102,11 +102,10 @@ const scrollTo = (to, duration) => {
 	link.addEventListener('click', (event) => {
 		const hasAnchor = /#[a-z-]+/.exec(link.href);
 		if (hasAnchor) {
-			scrollTo(document.querySelector(hasAnchor[0]).offsetTop, 500);
-			// if (document.querySelector('.-is-active')) {
-			// 	document.querySelector('.-is-active').classList.remove('-is-active');
-			// }
-			// link.classList.add('-is-active');
+			const headerHeight = document.querySelector('.l-header').clientHeight;
+			// const headerHeight = 0;
+			const anchor = document.querySelector(hasAnchor[0]);
+			scrollTo((anchor.offsetTop + anchor.children[0].offsetTop) - headerHeight - 10, 500);
 			event.preventDefault();
 		}
 	});
