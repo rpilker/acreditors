@@ -995,7 +995,7 @@ body main {
   display: block;
   width: 100%;
   height: 100%;
-  background-color: #dfe3e5;
+  background-color: $gray-dark;
   -webkit-transition: 0.15s;
   transition: 0.15s;
   -webkit-transform-origin: 0 0;
@@ -1137,7 +1137,7 @@ span.sm {
   padding: 10px 15px;
   font-size: 18px;
   line-height: 16px;
-  color: #82878a;
+  color: #717578;
   position: relative;
   display: block;
 }
@@ -1148,7 +1148,7 @@ span.sm {
   left: 15px;
   bottom: 3px;
   height: 1px;
-  background-color: #82878a;
+  background-color: #717578;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
   -webkit-transition: 0.15s;
@@ -1211,6 +1211,11 @@ span.sm {
     padding: 100px 15px 15px 80px;
   }
 }
+@media (max-height: 500px) {
+  .l-section {
+    padding: 90px 5px 30px 15px;
+  }
+}
 .l-section .text {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1240,6 +1245,11 @@ span.sm {
 @media only screen and (min-width: 700px) {
   .l-section .text p {
     font-size: 18px;
+  }
+}
+@media (max-height: 500px) {
+  .l-section .text p {
+    font-size: 15px;
   }
 }
 .l-section .text strong {
@@ -1445,7 +1455,7 @@ span.sm {
   color: #20292c;
   line-height: 1.5em;
   display: block;
-  padding: 15px;
+  padding: 0;
   display: grid;
   grid-template-areas: 'icon title' 'icon desc';
   grid-template-columns: 40px calc(100% - 40px);
@@ -1454,6 +1464,11 @@ span.sm {
   gap: 0 10px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+}
+@media only screen and (min-width: 700px) {
+  #contato .text p a {
+    padding: 15px 0;
+  }
 }
 #contato .text p a:hover {
   text-decoration: none;
@@ -1496,7 +1511,7 @@ span.sm {
 }
 .c-tab-nav .tabs .c-tab-item {
   padding: 5px 10px;
-  color: #82878a;
+  color: #717578;
   position: relative;
 }
 .c-tab-nav > .contents {
@@ -1504,6 +1519,8 @@ span.sm {
   height: 100%;
   border-left: 1px solid #20292c;
   padding-left: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .c-tab-nav .c-tab-item {
   cursor: pointer;
@@ -1537,7 +1554,7 @@ span.sm {
   -ms-flex-item-align: end;
       align-self: flex-end;
   margin: 0;
-  margin-right: -100%;
+  margin-right: -140%;
   margin-bottom: -1px;
   padding: 5px;
   background-color: rgba(252,252,252,0.8);
@@ -1578,7 +1595,7 @@ footer .l-footer-content .social svg {
 footer .l-footer-content hr {
   margin: 0 auto;
   max-width: 1200px;
-  border-color: #82878a;
+  border-color: #717578;
 }
 footer .l-footer-content p {
   width: 100%;
