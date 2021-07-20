@@ -6,7 +6,7 @@ $secondary = $primary
 // $secondary = #bb0022
 $black = #20292c
 $gray = #dfe3e5
-$dark-gray = #82878a
+$dark-gray = hsl(202deg 3% 45.5%)
 $white = #fcfcfc
 
 *
@@ -65,7 +65,7 @@ body
 			display: block
 			width: 100%
 			height: 100%
-			background-color: $gray
+			background-color: $gray-dark
 			transition: .15s
 			transform-origin: 0 0
 			height: 90px
@@ -219,6 +219,8 @@ span.sm
 	+above(700px)
 		grid-template-rows: 80px calc(100% - 80px)
 		padding: 100px 15px 15px 80px
+	@media(max-height: 500px)
+		padding: 90px 5px 30px 15px
 	.text
 		display: flex
 		flex-direction: column
@@ -234,6 +236,8 @@ span.sm
 			width: 100%
 			+above(700px)
 				font-size: 18px
+			@media(max-height: 500px)
+				font-size: 15px
 		strong
 			font-weight: 900
 #abertura
@@ -389,13 +393,15 @@ span.sm
 				color: $black
 				line-height: 1.5em
 				display: block
-				padding: 15px
+				padding: 0
 				display: grid
 				grid-template-areas: 'icon title' 'icon desc'
 				grid-template-columns: 40px calc(100% - 40px)
 				grid-template-rows: 23px 17px
 				gap: 0 10px
 				transition: .3s
+				+above(700px)
+					padding: 15px 0
 				&:hover
 					text-decoration: none
 					background-color: $gray
@@ -444,6 +450,8 @@ span.sm
 		height: 100%
 		border-left: 1px solid $black
 		padding-left: 20px
+		overflow-x: hidden
+		overflow-y: auto
 	.c-tab-item
 		cursor: pointer
 		&:hover
@@ -471,7 +479,7 @@ span.sm
 	font-weight: 400
 	align-self: flex-end
 	margin: 0
-	margin-right: -100%
+	margin-right: -140%
 	margin-bottom: -1px
 	padding: 5px
 	background-color: rgba($white, .8)
