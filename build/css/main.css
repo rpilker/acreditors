@@ -723,7 +723,8 @@ body a:focus {
   text-decoration: none;
 }
 body h2 {
-  margin: 0;
+  font-size: 25px;
+  margin: 0 0 15px;
 }
 @media only screen and (min-width: 700px) {
   body h2 {
@@ -1207,14 +1208,15 @@ span.sm {
           transform: scaleY(1);
 }
 .l-section {
-  height: 100vh;
-  padding: 90px 5px 100px 15px;
+  padding: 90px 5px 20px 15px;
   position: relative;
-  display: grid;
-  grid-template-rows: 40px calc(100% - 40px);
+  width: 100%;
 }
 @media only screen and (min-width: 700px) {
   .l-section {
+    display: grid;
+    grid-template-rows: 40px calc(100% - 40px);
+    height: 100vh;
     grid-template-rows: 80px calc(100% - 80px);
     padding: 100px 15px 15px 80px;
   }
@@ -1264,6 +1266,8 @@ span.sm {
   font-weight: 900;
 }
 #abertura {
+  display: grid;
+  height: 100vh;
   grid-gap: 20px;
   gap: 20px;
   grid-template-rows: 100%;
@@ -1271,7 +1275,7 @@ span.sm {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: end;
-  padding: 50px 5px 100px 15px;
+  padding: 100px 15px 15px;
 }
 @media only screen and (min-width: 700px) {
   #abertura {
@@ -1279,6 +1283,14 @@ span.sm {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+}
+#abertura .slogan {
+  width: 300%;
+}
+@media only screen and (min-width: 700px) {
+  #abertura .slogan {
+    width: 100%;
   }
 }
 #abertura h2 {
@@ -1306,7 +1318,6 @@ span.sm {
 #onde-estamos {
   grid-gap: 20px;
   gap: 20px;
-  padding: 50px 5px 100px 15px;
   grid-template-areas: 'title' 'map' 'text' 'table';
   grid-gap: 10px;
   gap: 10px;
@@ -1316,7 +1327,7 @@ span.sm {
 @media only screen and (min-width: 700px) {
   #onde-estamos {
     grid-template-areas: 'title title' 'text map' 'table map';
-    grid-template-rows: 80px calc(50% - 90px) calc(50% - 90px);
+    grid-template-rows: 80px calc(30% - 90px) calc(70% - 90px);
     grid-template-columns: calc(30% - 10px) calc(70% - 10px);
     padding: 100px 15px 15px 80px;
     -webkit-box-align: center;
@@ -1330,11 +1341,13 @@ span.sm {
 #onde-estamos .slogan {
   grid-area: text;
   margin: 0;
+  padding: 0;
   font-size: 18px;
 }
 @media only screen and (min-width: 700px) {
   #onde-estamos .slogan {
     width: 100%;
+    height: 100%;
     font-size: 23px;
   }
 }
@@ -1414,8 +1427,12 @@ span.sm {
     display: inline-block;
     margin-bottom: 0;
   }
-  #onde-estamos .table table tr + tr::after {
+  #onde-estamos .table table tr td::after {
+    vertical-align: baseline;
     content: ',\00a0';
+  }
+  #onde-estamos .table table tr:last-child td::after {
+    content: '.';
   }
 }
 #onde-estamos .table table tr td {

@@ -40,7 +40,8 @@ body
 	h2
 		// font-weight: 900!important
 		// text-transform: lowercase
-		margin: 0
+		font-size: 25px
+		margin: 0 0 15px
 		+above(700px)
 			font-size: 43px
 	.text
@@ -227,12 +228,13 @@ span.sm
 
 						// color: $dark-gray
 .l-section
-	height: 100vh
-	padding: 90px 5px 100px 15px
+	padding: 90px 5px 20px 15px
 	position: relative
-	display: grid
-	grid-template-rows: 40px calc(100% - 40px)
+	width: 100%
 	+above(700px)
+		display: grid
+		grid-template-rows: 40px calc(100% - 40px)
+		height: 100vh
 		grid-template-rows: 80px calc(100% - 80px)
 		padding: 100px 15px 15px 80px
 	@media(max-height: 500px)
@@ -257,15 +259,22 @@ span.sm
 		strong
 			font-weight: 900
 #abertura
+	display: grid
+	height: 100vh
 	gap: 20px
 	// grid-template-areas: 'title title' 'text map'
 	grid-template-rows: 100%
 	grid-template-columns: calc(30% - 10px) calc(70% - 10px)
 	align-items: end
-	padding: 50px 5px 100px 15px
+	// padding: 50px 5px 100px 15px
+	padding: 100px 15px 15px
 	+above(700px)
 		padding: 100px 15px 15px 80px
 		align-items: center
+	.slogan
+		width: 300%
+		+above(700px)
+			width: 100%
 	h2
 		visibility: hidden
 		top: calc(10% + 50px)
@@ -287,14 +296,14 @@ span.sm
 #onde-estamos
 	gap: 20px
 	// align-items: end
-	padding: 50px 5px 100px 15px
+	// padding: 50px 5px 100px 15px
 	grid-template-areas: 'title' 'map' 'text' 'table'
 	gap: 10px
 	grid-template-rows: 50px calc((100% - 175px) / 2) 95px calc((100% - 175px) / 2)
 	grid-template-columns: 100%
 	+above(700px)
 		grid-template-areas: 'title title' 'text map' 'table map'
-		grid-template-rows: 80px calc(50% - 90px) calc(50% - 90px)
+		grid-template-rows: 80px calc(30% - 90px) calc(70% - 90px)
 		grid-template-columns: calc(30% - 10px) calc(70% - 10px)
 		padding: 100px 15px 15px 80px
 		align-items: center
@@ -304,9 +313,11 @@ span.sm
 	.slogan
 		grid-area: text
 		margin: 0
+		padding: 0
 		font-size: 18px
 		+above(700px)
 			width: 100%
+			height: 100%
 			font-size: 23px
 	.mapa
 		grid-area: map
@@ -362,9 +373,14 @@ span.sm
 				+below(699px)
 					display: inline-block
 					margin-bottom: 0
-					& + tr
+					td
 						&::after
+							vertical-align: baseline
 							content: ',\00a0'
+					&:last-child
+						td
+							&::after
+								content: '.'
 				td
 					padding: 10px 0
 					font-size: 15px

@@ -121,15 +121,17 @@ const getSvgCenter = (path) => {
 const setTooltipPos = (tooltip, tooltipBack, { left, top }, fix = false) => {
 	const padding = [3, 15, 7, 15];
 	tooltip.setAttribute('x', left);
-	tooltip.setAttribute('y', top - 10);
+	tooltip.setAttribute('y', top);
 	setTimeout(() => {
 		const {
 			y: textY, x: textX, width: textWidth, height: textHeight,
 		} = tooltip.getBBox();
-		if (!fix && textX - (textWidth / 2) - padding[3] < 0) {
-			setTooltipPos(tooltip, tooltipBack, { left: (textWidth / 2) + padding[3] + 1, top }, true);
-		} if (!fix && textX + textWidth + padding[1] > tooltip.parentNode.getBBox().width) {
-			setTooltipPos(tooltip, tooltipBack, { left: tooltip.parentNode.getBBox().width - (textWidth / 2) - padding[3] - 50, top }, true);
+		if (!fix && textY - padding[0] < 10) {
+			setTooltipPos(tooltip, tooltipBack, { left, top: padding[0] }, true);
+		} else if (!fix && textX - (textWidth / 2) - padding[3] < 0) {
+			setTooltipPos(tooltip, tooltipBack, { left: (textWidth / 2) + padding[3] + 1, top: top < 0 ? 0 : top }, true);
+		} else if (!fix && textX + textWidth + padding[1] > tooltip.parentNode.getBBox().width) {
+			setTooltipPos(tooltip, tooltipBack, { left: tooltip.parentNode.getBBox().width - (textWidth / 2) - padding[3] - 50, top: top < 0 ? 0 : top }, true);
 		} else {
 			tooltipBack.setAttribute('x', textX - padding[3]);
 			tooltipBack.setAttribute('y', textY - padding[0]);
