@@ -144,7 +144,6 @@ const scrollTo = (to, duration, element = window) => {
 // };
 
 [...document.querySelectorAll('[data-nome]')].forEach((path) => {
-	// const tooltipBack = document.querySelector('.tooltip-back');
 	path.addEventListener('mouseover', () => {
 		if (!path.classList.contains('path-over')) {
 			const hoverPath = document.querySelector('.path-over');
@@ -155,7 +154,6 @@ const scrollTo = (to, duration, element = window) => {
 				document.querySelector(('.table .-selected')).classList.remove('-selected');
 			}
 			row.classList.add('-selected');
-			// console.log(row.offsetTop, row.parentNode.parentNode.parentNode.scrollTop);
 		}
 	});
 	path.addEventListener('click', () => {
