@@ -336,8 +336,14 @@ span.sm
 			path
 				stroke: $black
 				fill: $gray
+				stroke-linejoin: round
+				cursor: pointer
 				&#mun_3550308
 					fill: $black
+				&.path-over
+					stroke-width: 3
+					stroke: $primary
+					fill: transparent
 		.tooltip
 			position: absolute
 			background-color: $white
@@ -370,6 +376,8 @@ span.sm
 				display: block
 				border: 0
 			tr
+				&.-selected
+					font-weight: 900
 				+below(699px)
 					display: inline-block
 					margin-bottom: 0
@@ -531,7 +539,7 @@ footer
 	border: 0
 	margin: 0
 	position: relative
-	z-index: 2
+	z-index: 3
 	padding-bottom: 0
 	.l-footer-content
 		width: 100%

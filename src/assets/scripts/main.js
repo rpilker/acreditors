@@ -82,8 +82,8 @@ Math.easeInOutQuad = (t, b, c, d) => {
 	return -c / 2 * (t * (t - 2) - 1) + b;
 };
 
-const scrollTo = (to, duration) => {
-	const start = window.scrollY;
+const scrollTo = (to, duration, element = window) => {
+	const start = element.scrollY || element.scrollTop;
 	const change = to - start;
 	let currentTime = 0;
 	const increment = 20;
@@ -91,7 +91,7 @@ const scrollTo = (to, duration) => {
 	const animateScroll = () => {
 		currentTime += increment;
 		const val = Math.easeInOutQuad(currentTime, start, change, duration);
-		window.scrollTo(0, val);
+		element.scrollTo(0, val);
 		if (currentTime < duration) {
 			setTimeout(animateScroll, increment);
 		}
@@ -111,54 +111,78 @@ const scrollTo = (to, duration) => {
 	});
 });
 
-const getSvgCenter = (path) => {
-	const parent = path.parentNode;
-	const ratio = parent.getBoundingClientRect().width / parent.getBBox().width;
-	const bbox = path.getBBox();
-	return [Math.round(bbox.x + (bbox.width / 2)), bbox.y, ratio];
-};
+// const getSvgCenter = (path) => {
+// 	const parent = path.parentNode;
+// 	const ratio = parent.getBoundingClientRect().width / parent.getBBox().width;
+// 	const bbox = path.getBBox();
+// 	return [Math.round(bbox.x + (bbox.width / 2)), bbox.y, ratio];
+// };
 
-const setTooltipPos = (tooltip, tooltipBack, { left, top }, fix = false) => {
-	const padding = [3, 15, 7, 15];
-	tooltip.setAttribute('x', left);
-	tooltip.setAttribute('y', top);
-	setTimeout(() => {
-		const {
-			y: textY, x: textX, width: textWidth, height: textHeight,
-		} = tooltip.getBBox();
-		if (!fix && textY - padding[0] < 10) {
-			setTooltipPos(tooltip, tooltipBack, { left, top: padding[0] }, true);
-		} else if (!fix && textX - (textWidth / 2) - padding[3] < 0) {
-			setTooltipPos(tooltip, tooltipBack, { left: (textWidth / 2) + padding[3] + 1, top: top < 0 ? 0 : top }, true);
-		} else if (!fix && textX + textWidth + padding[1] > tooltip.parentNode.getBBox().width) {
-			setTooltipPos(tooltip, tooltipBack, { left: tooltip.parentNode.getBBox().width - (textWidth / 2) - padding[3] - 50, top: top < 0 ? 0 : top }, true);
-		} else {
-			tooltipBack.setAttribute('x', textX - padding[3]);
-			tooltipBack.setAttribute('y', textY - padding[0]);
-			tooltipBack.setAttribute('width', textWidth + padding[3] + padding[1]);
-			tooltipBack.setAttribute('height', textHeight + padding[2] + padding[0]);
-			tooltip.classList.add('-show');
-			tooltipBack.classList.add('-show');
-		}
-	}, 10);
-};
+// const setTooltipPos = (tooltip, tooltipBack, { left, top }, fix = false) => {
+// 	const padding = [3, 15, 7, 15];
+// 	tooltip.setAttribute('x', left);
+// 	tooltip.setAttribute('y', top);
+// 	setTimeout(() => {
+// 		const {
+// 			y: textY, x: textX, width: textWidth, height: textHeight,
+// 		} = tooltip.getBBox();
+// 		if (!fix && textY - padding[0] < 10) {
+// 			setTooltipPos(tooltip, tooltipBack, { left, top: padding[0] }, true);
+// 		} else if (!fix && textX - (textWidth / 2) - padding[3] < 0) {
+// 			setTooltipPos(tooltip, tooltipBack, { left: (textWidth / 2) + padding[3] + 1, top: top < 0 ? 0 : top }, true);
+// 		} else if (!fix && textX + textWidth + padding[1] > tooltip.parentNode.getBBox().width) {
+// 			setTooltipPos(tooltip, tooltipBack, { left: tooltip.parentNode.getBBox().width - (textWidth / 2) - padding[3] - 50, top: top < 0 ? 0 : top }, true);
+// 		} else {
+// 			tooltipBack.setAttribute('x', textX - padding[3]);
+// 			tooltipBack.setAttribute('y', textY - padding[0]);
+// 			tooltipBack.setAttribute('width', textWidth + padding[3] + padding[1]);
+// 			tooltipBack.setAttribute('height', textHeight + padding[2] + padding[0]);
+// 			tooltip.classList.add('-show');
+// 			tooltipBack.classList.add('-show');
+// 		}
+// 	}, 10);
+// };
 
 [...document.querySelectorAll('[data-nome]')].forEach((path) => {
-	const tooltip = document.querySelector('.tooltip');
-	const tooltipBack = document.querySelector('.tooltip-back');
-	path.addEventListener('mouseenter', () => {
-		if (tooltip.innerHTML !== path.dataset.nome) {
-			const [left, top, ratio] = getSvgCenter(path);
-			tooltip.innerHTML = path.dataset.nome;
-			tooltip.setAttribute('style', `font-size: ${Math.round(+tooltip.dataset.fontSize / ratio)}px`);
-			setTooltipPos(tooltip, tooltipBack, { left, top });
+	// const tooltipBack = document.querySelector('.tooltip-back');
+	path.addEventListener('mouseover', () => {
+		if (!path.classList.contains('path-over')) {
+			const hoverPath = document.querySelector('.path-over');
+			hoverPath.setAttribute('d', path.getAttribute('d'));
+			hoverPath.dataset.nome = path.dataset.nome;
+			const row = [...document.querySelectorAll('.table tr')].find(rowEl => rowEl.innerText === path.dataset.nome);
+			if (document.querySelector(('.table .-selected'))) {
+				document.querySelector(('.table .-selected')).classList.remove('-selected');
+			}
+			row.classList.add('-selected');
+			// console.log(row.offsetTop, row.parentNode.parentNode.parentNode.scrollTop);
 		}
-		// tooltip.style.top = top;
 	});
-	path.addEventListener('mouseleave', () => {
-		tooltip.classList.remove('-show');
-		tooltipBack.classList.remove('-show');
+	path.addEventListener('click', () => {
+		const row = [...document.querySelectorAll('.table tr')].find(rowEl => rowEl.innerText === path.dataset.nome);
+		if (row.offsetTop > row.parentNode.parentNode.parentNode.clientHeight - row.parentNode.parentNode.parentNode.scrollTop) {
+			scrollTo(row.offsetTop, 100, row.parentNode.parentNode.parentNode);
+		}
 	});
+});
+[...document.querySelectorAll('.table tr')].forEach((row) => {
+	row.addEventListener('mouseenter', () => {
+		const path = document.querySelector(`.mapa path[data-nome="${row.innerText}"]`);
+		const hoverPath = document.querySelector('.path-over');
+		hoverPath.setAttribute('d', path.getAttribute('d'));
+		if (document.querySelector(('.table .-selected'))) {
+			document.querySelector(('.table .-selected')).classList.remove('-selected');
+		}
+		row.classList.add('-selected');
+	});
+});
+document.querySelector('.mapa').addEventListener('mouseleave', () => {
+	document.querySelector('.path-over').setAttribute('d', '');
+});
+document.querySelector('.mapa').addEventListener('mouseover', (e) => {
+	if (e.path[0].tagName.toLowerCase() !== 'path') {
+		document.querySelector('.path-over').setAttribute('d', '');
+	}
 });
 
 (() => {
