@@ -72,7 +72,7 @@ body
 		display: block
 		width: 5px
 		margin: 0 0 2px
-		height: auto
+		// height: auto
 		a
 			display: block
 			width: 100%
@@ -80,7 +80,8 @@ body
 			background-color: $gray
 			transition: .15s
 			transform-origin: 0 0
-			height: 90px
+			height: 83px
+			transition: .3s
 			&:hover
 				transform: scaleX(1.5)
 				background-color: $secondary
@@ -182,6 +183,7 @@ span.sm
 					// font-weight: 900
 					position: relative
 					display: block
+					transition: .15s
 					&::before
 						content: ''
 						position: absolute

@@ -1001,7 +1001,6 @@ body main {
   display: block;
   width: 5px;
   margin: 0 0 2px;
-  height: auto;
 }
 .l-aside-nav li a {
   display: block;
@@ -1012,7 +1011,9 @@ body main {
   transition: 0.15s;
   -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
-  height: 90px;
+  height: 83px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 .l-aside-nav li a:hover {
   -webkit-transform: scaleX(1.5);
@@ -1157,6 +1158,8 @@ span.sm {
   color: #717578;
   position: relative;
   display: block;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
 }
 .l-header > .l-header-nav ul li a::before {
   content: '';
