@@ -1302,6 +1302,7 @@ span.sm {
   #onde-estamos .slogan {
     width: 100%;
     height: 100%;
+    min-width: 400px;
     font-size: 23px;
   }
 }
