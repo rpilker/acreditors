@@ -83,7 +83,7 @@ Math.easeInOutQuad = (t, b, c, d) => {
 };
 
 const scrollTo = (to, duration, element = window) => {
-	const start = element.scrollY || element.scrollTop;
+	const start = element.scrollY || element.scrollTop || 0;
 	const change = to - start;
 	let currentTime = 0;
 	const increment = 20;
